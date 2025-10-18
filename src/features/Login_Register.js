@@ -69,9 +69,6 @@ function AuthModal({ className }) { // accept styled-components className
             {/* -------------------- LOGIN FORM -------------------- */}
             <div className={`modal-content signin-body px-2 ${isLoginView ? '' : 'hide'}`}>
                 <div className="modal-header">
-                    <button className="close" data-dismiss="modal" onClick={() => console.log('Close Modal')}>
-                        <span aria-hidden="true">×</span>
-                    </button>
                     <h2 className="modal-title">เข้าสู่ระบบ</h2>
                 </div>
 
@@ -145,9 +142,6 @@ function AuthModal({ className }) { // accept styled-components className
             {/* -------------------- REGISTRATION FORM -------------------- */}
             <div className={`modal-content signup-body px-2 ${isLoginView ? 'hide' : ''}`}>
                 <div className="modal-header">
-                    <button type="button" className="close" data-dismiss="modal" onClick={() => console.log('Close Modal')}>
-                        <span aria-hidden="true">×</span>
-                    </button>
                     <h2 className="modal-title">สมัครสมาชิก</h2>
                 </div>
                 <div className="modal-body">
