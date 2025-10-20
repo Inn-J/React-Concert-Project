@@ -1,0 +1,106 @@
+[
+    {
+        "id":1,
+        "name":"How Do You Do, Snoopy ? 75 Years: A Journey of Friendship Through Art",
+        "date":"06 ก.ย. - 07 ธ.ค. 2025",
+        "time":"10:00 - 20:00",
+        "location":"ริเวอร์ ซิตี้ แบงค็อก",
+        "price":{
+            "1":{"type":"General Admission (Adult)", "amount":450.00},
+            "2":{"type":"Concession", "amount":350.00}
+        },
+        "image":"HDYDS.jpg",
+        "Category":"Art Exhibition"
+    },
+    {
+        "id":2,
+        "name":"Mystic Universe",
+        "date":"05 พ.ค. - 31 ธ.ค. 2025",
+        "time":"11:00 - 19:00",
+        "location":"Hang Dong, Chiang Mai",
+        "price":{
+            "1":{"type":"Mystic Universe", "amount":970.00}
+        },
+        "image":"MysticUniverse.png",
+        "Category":"Art Exhibition"
+    },
+    {
+        "id":3,
+        "name":"Shine On , Boss Nook Happy 29th",
+        "date":"21 ต.ค. 2025",
+        "time":"14:00 - 23:00",
+        "location":"แจ้งวัฒนะ ฮอลล์, เซ็นทรัลแจ้งวัฒนะ ชั้น 5.5 ",
+        "price":{
+            "1":{"type":"ZONE VIP", "amount":2190.00},
+            "2":{"type":"ZONE N", "amount":950.00},
+            "3":{"type":"ZONE T", "amount":250.00}
+        },
+        "image":"ShineonBossNook.jpg",
+        "Category":"Event"
+    },
+    {
+        "id":4,
+        "name":"UNIQUE HALLOWEEN FEST",
+        "date":"31 ต.ค. 2025",
+        "time":"15:00 - 23:59",
+        "location":"ตลาดกรีนวินเทจรัชโยธิน",
+        "price":{
+            "1":{"type":"REGULAR PASS", "amount":650.00},
+            "2":{"type":"VIP PASS", "amount":999.00},
+            "3":{"type":"STUDENT PASS", "amount":490.00}
+        },
+        "image":"UNIQUEHALLOWEENFEST.jpg",
+        "Category":"Concert"
+    },
+    {
+        "id":5,
+        "name":"Fellow Fellow Riverside Mini Concert",
+        "date":"31 ต.ค. 2025",
+        "time":"18:00 - 23:59",
+        "location":"RARIN - Bangkok Riverside Venue",
+        "price":{
+            "1":{"type":"Standing Ticket", "amount":1400.00}
+        },
+        "image":"FellowFellow.jpg",
+        "Category":"Concert"
+    },
+    {
+        "id":6,
+        "name":"Music Talk Festival",
+        "date":"01 พ.ย. 2025",
+        "time":"15:00 - 23:59",
+        "location":"Riverdale Marina",
+        "price":{
+            "1":{"type":"บัตร VIP", "amount":1290.00},
+            "2":{"type":"บัตร Standard ( โปร 1 แถม 1 )", "amount":890.00}
+        },
+        "image":"MusicTalk",
+        "Category":"Concert"
+    },
+    {
+        "id":7,
+        "name":"เทศกาลดนตรีเหนือสุดหยุดโลก 4 : Infinity Space",
+        "date":"01 - 02 พ.ย. 2025",
+        "time":"17:00 - 23:59",
+        "location":"ลานเหนือสุดเฟสติวัล (Something Journey)",
+        "price":{
+            "1":{"type":"ซื้อบัตรเข้างาน เหนือสุดหยุดโลก 4", "amount":1190.00},
+            "2":{"type":"ซื้อบัตรรถโดยสารงาน เหนือสุดหยุดโลก 4","amount":100}
+        },
+        "image":"InfinitySpace.jpg",
+        "Category":"Concert"
+    },
+    {
+        "id":8,
+        "name":"Yeepeng Lanna Fest 2025",
+        "date":"05 - 06 พ.ย. 2025",
+        "time":"00:00 - 23:59",
+        "location":"Gassan Panorama Golf Club",
+        "price":{
+            "1":{"type":"5 NOV 25 ", "amount":100.00},
+            "2":{"type":"6 NOV 25 ","amount":100.00}
+        },
+        "image":"YeepengLanna2025.jpg",
+        "Category":"Festival"
+    }
+]
