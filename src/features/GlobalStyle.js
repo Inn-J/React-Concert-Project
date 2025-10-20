@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     background-color:#F7F3E9;
   }
+    
     `;
 
 export default GlobalStyle;

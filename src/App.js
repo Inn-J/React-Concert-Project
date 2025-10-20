@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
-
+import './App.css';
+import { useEffect, useState } from 'react';
 import Navbar from './features/Navbar';
 import Container from './features/Container';
 import Login_Register from './features/Login_Register';
 import GlobalStyle from './features/GlobalStyle';
-import { fetchProducts } from './features/Product/actions'; 
-
+import Concertlist from './features/Concert';
+import { fetchProducts } from './features/Product/actions';
+import ConcertDetail from './features/ConcertDetail'
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   const products = useSelector((state) => state.products);
@@ -29,8 +30,13 @@ function App() {
 
   return (
     <>
-    <GlobalStyle/>
-    <Navbar />
+      <GlobalStyle />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Concertlist/>} />
+        <Route path="/concert-detail/:id" element={<ConcertDetail/>} />
+      </Routes>
+
     </>
   );
 }

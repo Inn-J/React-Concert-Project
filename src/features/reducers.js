@@ -1,6 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import {
   fetchProducts,
+  getConcertById,
   addProduct,
   updateProduct,
   deleteProduct,
@@ -12,6 +13,11 @@ export default createReducer([], (builder) => {
   builder
     .addCase(fetchProducts, (state, action) => {
       return action.payload;
+    })
+    .addCase(getConcertById, (state, action) => {
+      state.selected = state.list.find(
+        (concert) => concert.id === action.payload
+      );
     })
     .addCase(addProduct, (state, action) => {
       state.push({ id: ++currentProductId, ...action.payload });
