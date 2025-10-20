@@ -32,10 +32,11 @@ const Wrap = styled.div`
 `;
 
 const Grid = styled.ul`
-  list-style: none;
+  llist-style: none;
   padding: 0;
-  margin: 0;
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 24px;
+  margin: 0 auto;    
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px 32px;
 `;

@@ -32,11 +32,12 @@ function App() {
     <>
       <GlobalStyle />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Concertlist/>} />
-        <Route path="/concert-detail/:id" element={<ConcertDetail/>} />
-      </Routes>
-
+      <Container>
+        <Routes>
+          <Route path="/" element={<Concertlist/>} />
+          <Route path="/concert-detail/:id" element={<ConcertDetail/>} />
+        </Routes>
+      </Container>
     </>
   );
 }

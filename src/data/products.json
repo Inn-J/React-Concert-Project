@@ -6,8 +6,8 @@
     "time": "10:00 - 20:00",
     "location": "ริเวอร์ ซิตี้ แบงค็อก",
     "prices": [
-      { "option": "General Admission (Adult)", "day": null, "amount": 450 },
-      { "option": "Concession", "day": null, "amount": 350 }
+      { "option": "General Admission (Adult)", "day": "06 ก.ย. - 07 ธ.ค. 2025", "amount": 450 },
+      { "option": "Concession", "day": "06 ก.ย. - 07 ธ.ค. 2025", "amount": 350 }
     ],
     "image": "HDYDS.jpg",
     "description": "“How Do You Do, Snoopy? 75 Years: A Journey of Friendship Through Art” นิทรรศการเฉลิมฉลองครบรอบ 75 ปีของ PeanutsTM ที่มาพร้อมกับเจ้าหมาน้อย Snoopy และคาแรคเตอร์สุดน่ารักมากมายขวัญใจแฟน ๆ ทั่วโลก!",
@@ -20,7 +20,7 @@
     "time": "11:00 - 19:00",
     "location": "Hang Dong, Chiang Mai",
     "prices": [
-      { "option": "Mystic Universe", "day": null, "amount": 970 }
+      { "option": "Mystic Universe", "day": "05 พ.ค. - 31 ธ.ค. 2025", "amount": 970 }
     ],
     "image": "MysticUniverse.png",
     "Category": "Art Exhibition"
@@ -32,9 +32,9 @@
     "time": "14:00 - 23:00",
     "location": "แจ้งวัฒนะ ฮอลล์, เซ็นทรัลแจ้งวัฒนะ ชั้น 5.5 ",
     "prices": [
-      { "option": "ZONE VIP", "day": null, "amount": 2190 },
-      { "option": "ZONE N",   "day": null, "amount": 950 },
-      { "option": "ZONE T",   "day": null, "amount": 250 }
+      { "option": "ZONE VIP", "day": "21 ต.ค. 2025", "amount": 2190 },
+      { "option": "ZONE N",   "day": "21 ต.ค. 2025", "amount": 950 },
+      { "option": "ZONE T",   "day": "21 ต.ค. 2025", "amount": 250 }
     ],
     "image": "ShineonBossNook.jpg",
     "Category": "Event"
@@ -46,9 +46,9 @@
     "time": "15:00 - 23:59",
     "location": "ตลาดกรีนวินเทจรัชโยธิน",
     "prices": [
-      { "option": "REGULAR PASS", "day": null, "amount": 650 },
-      { "option": "VIP PASS",     "day": null, "amount": 999 },
-      { "option": "STUDENT PASS", "day": null, "amount": 490 }
+      { "option": "REGULAR PASS", "day": "31 ต.ค. 2025", "amount": 650 },
+      { "option": "VIP PASS",     "day": "31 ต.ค. 2025", "amount": 999 },
+      { "option": "STUDENT PASS", "day": "31 ต.ค. 2025", "amount": 490 }
     ],
     "image": "UNIQUEHALLOWEENFEST.jpg",
     "Category": "Concert"
@@ -60,7 +60,7 @@
     "time": "18:00 - 23:59",
     "location": "RARIN - Bangkok Riverside Venue",
     "prices": [
-      { "option": "Standing Ticket", "day": null, "amount": 1400 }
+      { "option": "Standing Ticket", "day": "31 ต.ค. 2025", "amount": 1400 }
     ],
     "image": "FellowFellow.jpg",
     "Category": "Concert"
@@ -72,8 +72,8 @@
     "time": "15:00 - 23:59",
     "location": "Riverdale Marina",
     "prices": [
-      { "option": "บัตร VIP",                         "day": null, "amount": 1290 },
-      { "option": "บัตร Standard ( โปร 1 แถม 1 )",   "day": null, "amount": 890 }
+      { "option": "บัตร VIP",                         "day": "01 พ.ย. 2025", "amount": 1290 },
+      { "option": "บัตร Standard ( โปร 1 แถม 1 )",   "day": "01 พ.ย. 2025", "amount": 890 }
     ],
     "image": "MusicTalk.jpg",
     "Category": "Concert"
@@ -85,8 +85,8 @@
     "time": "17:00 - 23:59",
     "location": "ลานเหนือสุดเฟสติวัล (Something Journey)",
     "prices": [
-      { "option": "ซื้อบัตรเข้างาน เหนือสุดหยุดโลก 4", "day": null, "amount": 1190 },
-      { "option": "ซื้อบัตรรถโดยสารงาน เหนือสุดหยุดโลก 4", "day": null, "amount": 100 }
+      { "option": "ซื้อบัตรเข้างาน เหนือสุดหยุดโลก 4", "day": "01 - 02 พ.ย. 2025", "amount": 1190 },
+      { "option": "ซื้อบัตรรถโดยสารงาน เหนือสุดหยุดโลก 4", "day": "01 - 02 พ.ย. 2025", "amount": 100 }
     ],
     "image": "InfinitySpace.jpg",
     "Category": "Concert"
@@ -98,8 +98,9 @@
     "time": "00:00 - 23:59",
     "location": "Gassan Panorama Golf Club",
     "prices": [
-      { "option": null, "day": "5 NOV 25", "amount": 100 },
-      { "option": null, "day": "6 NOV 25", "amount": 100 }
+      { "option": "Premium Seat", "day": "05 - 06 พ.ย. 2025", "amount": 6500 },
+      { "option": "VIP Seat", "day": "05 - 06 พ.ย. 2025", "amount": 5500 },
+      { "option": "Standard Seat", "day": "05 - 06 พ.ย. 2025", "amount": 4500 }
     ],
     "image": "YeepengLanna2025.jpg",
     "Category": "Festival"

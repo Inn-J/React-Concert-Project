@@ -12,7 +12,8 @@ Container.propTypes = {
 };
 
 export default styled(Container)`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
 `;

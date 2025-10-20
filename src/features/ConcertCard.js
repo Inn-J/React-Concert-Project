@@ -26,6 +26,8 @@ function ConcertCard({ item, className }) {
       </Link>
 
       {item.location && <small className="ConcertCard__location">{item.location}</small>}
+      {item.date && <small className="ConcertCard__date">วันที่ {item.date}</small>}
+      {item.time && <small className="ConcertCard__time">เวลา: {item.time}</small>}
 
       <Link to={`/concert-detail/${item.id}`}>
         <button className="ConcertCard__button">Buy Now</button>
@@ -45,8 +47,8 @@ ConcertCard.propTypes = {
 };
 
 export default styled(ConcertCard)`
-  width: 200px;
-  height: 430px;
+  width: 280px;
+  height: 550px;
   background: #ffffff;
   padding: 12px;
   display: flex;
@@ -57,20 +59,32 @@ export default styled(ConcertCard)`
 
   .ConcertCard__image {
     width: 100%;
-    height: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 8px;
     display: block;
     background: #f5f5f5;
   }
 
   .ConcertCard__name {
-    color: #333;
+    color: #000000ff;
     font-weight: 600;
   }
 
   .ConcertCard__location {
-    color: #767676;
+    color: #333333ff;
   }
-    .ConcertCard__button{
+
+  .ConcertCard__date {
+    color: #333333ff;
+  }
+
+  .ConcertCard__time {
+    color: #333333ff;
+  }
+  
+  .ConcertCard__button{
     background-color: #FF8B59;
   color: white;
   border: none;
