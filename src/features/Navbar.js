@@ -9,7 +9,7 @@ function Navbar({className}) {
   return (
     <header className={className}>
       <Link to="/" className="brand">Ticketto</Link>
-      <Link to="/login" className="Profile">Profile</Link>
+      <Link to="/login" className="login">login</Link>
     </header>
   );
 }

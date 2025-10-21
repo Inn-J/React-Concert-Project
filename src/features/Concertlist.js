@@ -28,7 +28,7 @@ export default function ConcertList() {
 }
 
 const Wrap = styled.div`
-  padding: 96px 24px 24px;
+  padding: 48px 24px 24px;
 `;
 
 const Grid = styled.ul`

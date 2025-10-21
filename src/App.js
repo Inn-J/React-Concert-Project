@@ -5,10 +5,10 @@ import Navbar from './features/Navbar';
 import Container from './features/Container';
 import Login_Register from './features/Login_Register';
 import GlobalStyle from './features/GlobalStyle';
-import Concertlist from './features/Concert';
 import { fetchProducts } from './features/Product/actions';
 import ConcertDetail from './features/ConcertDetail'
 import { Routes, Route } from 'react-router-dom';
+import Home from './features/Home';
 
 function App() {
   const products = useSelector((state) => state.products);
@@ -34,8 +34,9 @@ function App() {
       <Navbar />
       <Container>
         <Routes>
-          <Route path="/" element={<Concertlist/>} />
+          <Route path="/" element={<Home/>} />
           <Route path="/concert-detail/:id" element={<ConcertDetail/>} />
+          <Route path="/login" element={<Login_Register />} />
         </Routes>
       </Container>
     </>
