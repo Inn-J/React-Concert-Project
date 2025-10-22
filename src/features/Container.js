@@ -14,6 +14,6 @@ Container.propTypes = {
 export default styled(Container)`
   display: flex;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 1600px;
   box-sizing: border-box;
 `;

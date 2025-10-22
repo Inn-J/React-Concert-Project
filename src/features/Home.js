@@ -28,7 +28,7 @@ const HomeWrap = styled.div`
 
 const ScrollSection = styled.section`
   width: 100%;
-  max-width: 1600px;
+  max-width: 1400px;
 `;
 
 const ListSection = styled.section`

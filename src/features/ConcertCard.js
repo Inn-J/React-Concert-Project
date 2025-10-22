@@ -55,6 +55,7 @@ export default styled(ConcertCard)`
   flex-direction: column;
   gap: 8px;
   position: relative;
+  text-align: center;
  
 
   .ConcertCard__image {
@@ -70,6 +71,7 @@ export default styled(ConcertCard)`
   .ConcertCard__name {
     color: #000000ff;
     font-weight: 600;
+
   }
 
   .ConcertCard__location {
