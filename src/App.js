@@ -9,6 +9,7 @@ import { fetchProducts } from './features/Product/actions';
 import ConcertDetail from './features/ConcertDetail'
 import { Routes, Route } from 'react-router-dom';
 import Home from './features/Home';
+import SelectTicket from './features/SelectTicket';
 
 function App() {
   const products = useSelector((state) => state.products);
@@ -37,6 +38,8 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="/concert-detail/:id" element={<ConcertDetail/>} />
           <Route path="/login" element={<Login_Register />} />
+          <Route path="/select-ticket/:id" element={<SelectTicket />} />
+          
         </Routes>
       </Container>
     </>
