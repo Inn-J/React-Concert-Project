@@ -39,7 +39,6 @@ function App() {
           <Route path="/concert-detail/:id" element={<ConcertDetail/>} />
           <Route path="/login" element={<Login_Register />} />
           <Route path="/select-ticket/:id" element={<SelectTicket />} />
-          
         </Routes>
       </Container>
     </>

@@ -84,7 +84,7 @@ export default function ScrollConcert() {
 
 
 const Wrap = styled.div`
-  padding: 64px 0;
+  padding: 24px 0;
   text-align: center;
   background-color: #f8f4ec;
 

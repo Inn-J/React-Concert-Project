@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import ScrollConcert from './ConcertScroll';
+import ScrollConcert from './3DConcertlist';
 import Concertlist from './Concertlist';
+import IncommingConcertlist from './IncomingConcertlist';
 
 export default function Home() {
   return (
@@ -9,6 +10,9 @@ export default function Home() {
       <ScrollSection>
         <ScrollConcert />
       </ScrollSection>
+      <ListSection>
+        <IncommingConcertlist />
+      </ListSection>
       <ListSection>
         <Concertlist />
       </ListSection>
@@ -20,9 +24,9 @@ const HomeWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 48px; 
+  gap: 24px; 
   width: 100%;
-  padding-top: 80px;
+  padding-top: 40px;
   box-sizing: border-box;
 `;
 
