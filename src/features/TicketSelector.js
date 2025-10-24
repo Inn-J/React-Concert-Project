@@ -21,7 +21,7 @@ function TicketSelector({ prices = [], onChange, className }) {
 
   const updateQty = (index, next) => {
     setQuantities((prev) => {
-      const max = Number(prices[index]?.maxQty ?? Infinity);
+      const max = 5
       const safe = Math.max(0, Math.min(next, max));
       if (safe === prev[index]) return prev;
       const copy = [...prev];
@@ -45,7 +45,7 @@ function TicketSelector({ prices = [], onChange, className }) {
         {prices.map((price, index) => {
           const qty = quantities[index] ?? 0;
           const amount = Number(price.amount || 0);
-          const maxQty = price.maxQty ?? Infinity;
+          const maxQty = 5;
 
           return (
             <li key={index} className={`ticket-item ${qty > 0 ? "active" : ""}`}>
@@ -66,14 +66,8 @@ function TicketSelector({ prices = [], onChange, className }) {
                 >
                   −
                 </button>
-                <input
-                  type="number"
-                  min={0}
-                  max={Number.isFinite(maxQty) ? maxQty : undefined}
-                  value={qty}
-                  onChange={(e) => onManualChange(index, e)}
-                  aria-live="polite"
-                />
+                
+                <span>{qty}</span>
                 <button
                   type="button"
                   className="qty-btn"
@@ -194,7 +188,7 @@ export default styled(TicketSelector)`
     cursor: not-allowed;
   }
 
-  .qty-group input {
+  .qty-group span {
     width: 64px;
     text-align: center;
     padding: 6px 8px;
