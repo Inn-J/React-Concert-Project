@@ -12,6 +12,7 @@
       { "option": "Concession 07 ก.ย. 2025","amount": 350 }
     ],
     "image": "HDYDS.jpg",
+    "venueImage":"HDYDS_venue.jpg",
     "description": [
       {"main":"“How Do You Do, Snoopy? 75 Years: A Journey of Friendship Through Art” นิทรรศการเฉลิมฉลองครบรอบ 75 ปีของ PeanutsTM ที่มาพร้อมกับเจ้าหมาน้อย Snoopy และคาแรคเตอร์สุดน่ารักมากมายขวัญใจแฟน ๆ ทั่วโลก!",
       "ticket":"General Admission Early Bird (Adult) : 450 บาท / Concession : 350 บาท ",
@@ -29,6 +30,7 @@
       { "option": "Mystic Universe","amount": 970 }
     ],
     "image": "MysticUniverse.png",
+    "venueImage":"MysticUniverse_venue.jpg",
     "description": [
       {"main":"งานระดับโลกที่เปิดตัวในเชียงใหม่ เมืองหลวงแห่งวัฒนธรรมของประเทศไทยนิทรรศการ “Mystic Universe” จะพาคุณไปสัมผัสกับพื้นที่หลายมิติที่สร้างขึ้นโดยผู้เชี่ยวชาญด้านศิลปะดิจิทัลเพลิดเพลินไปกับงานศิลปะการติดตั้งอันน่าหลงใหลที่นำความรู้โบราณและประเพณีลึกลับมาสู่ชีวิตจริงในรูปแบบที่ทันสมัย ดื่มด่ำไปกับโลกที่ไม่เหมือนใครที่ความลึกลับของอารยธรรมโบราณมาบรรจบกับเทคโนโลยีดิจิทัลขั้นสูงโดยปรมาจารย์ระดับโลก -- Android Jones, Julius Horsthuis, Luminokaya, Igor Baranko และสตูดิโอ 360Art - สร้างสรรค์การเดินทางที่น่าตื่นเต้นผ่านอวกาศและกาลเวลาเพื่อคุณ",
       "ticket":"Mystic Universe 970 บาท",
@@ -48,6 +50,7 @@
       { "option": "ZONE T","amount": 250 }
     ],
     "image": "ShineonBossNook.jpg",
+    "venueImage":"ShineonBossNook_venue.jpg",
     "description": [
       {"main":"เตรียมหัวใจให้พร้อม แล้วมา Shine On ไปด้วยกัน ในวันเกิดครบรอบ 29 ปี ของ “นุ๊ก ธนดล”พบกับกิจกรรมสุดอบอุ่น ใกล้ชิด และเป็นกันเอง พร้อมโชว์พิเศษที่จัดขึ้นเพื่อแฟนๆ โดยเฉพาะ มาร่วมสร้างช่วงเวลาแห่งความสุข และบันทึกความทรงจำ ที่จะอยู่ในใจไปอีกปีอย่างไม่มีวันลืม ",
       "ticket":"ZONE VIP 2,190 บาท / ZONE N 950 บาท / ZONE T 250 บาท",
@@ -67,6 +70,7 @@
       { "option": "STUDENT PASS","amount": 490 }
     ],
     "image": "UNIQUEHALLOWEENFEST.jpg",
+    "venueImage":"UNIQUEHALLOWEENFEST_venue.jpg",
     "description": [
       {"main":"คอนเสิร์ต + บ้านผีสิง + ผีจ้างหนังอัดแน่น 2 วันเต็ม !! ใหญ่สุด หลอนสุด ใจกลางรัชโยธิน by UNIQUE พบกับร้านค้าภายในงาน มากกว่า 35 ร้านค้า อลังสุดด!!! กิจกรรมบ้านผีสิงสุดสะพรึง โรงหนังกลางแปลง เรื่อง ผีผี SPECIAL SHOW กายกรรมผีสิงภายในงาน ฉากสุดอลังการ กลางเมือง และ DJ ตลอดงาน",
       "ticket":"REGULAR PASS 650 บาท / VIP PASS 999 บาท / STUDENT PASS 490 บาท",
@@ -84,6 +88,7 @@
       { "option": "Standing Ticket","amount": 1400 }
     ],
     "image": "FellowFellow.jpg",
+    "venueImage":"FellowFellow_venue.png",
     "description": [
       {"main":"เตรียมตัวให้พร้อมสำหรับค่ำคืนสุดพิเศษริมแม่น้ำเจ้าพระยา กับวง Fellow Fellow Halloween - วันศุกร์ที่ 31 ตุลาคม 2025  จัดร่วมกับ Corona Beer - เต็มที่ตลอดคืน ฟรีเบียร์ 1 ขวด/บัตร และมีของกินเล่นอื่น ๆ ให้บริการตลอดงาน ",
       "ticket":"Standing Ticket 1,400 บาท",
@@ -102,6 +107,7 @@
       { "option": "บัตร Standard ( โปร 1 แถม 1 )","amount": 890 }
     ],
     "image": "MusicTalk.jpg",
+    "venueImage":"MusicTalk_venue.jpg",
     "description": [
       {"main":"เทศกาลดนตรีของคนกันเอง Music talk festival คอนกันเอง เปิดประสบการณ์ใหม่กับการชมดนตรี และการทอร์คโชว์ที่จะทำให้ขากรรไกรค้าง ร้อง เล่น เต้น ไปด้วยกัน สุขสนุกสุด ริมแม่น้ำเจ้าพระยา",
       "ticket":"บัตร VIP 1,290 บาท / บัตร Standard 890 บาท",
@@ -122,6 +128,7 @@
       { "option": "บัตรรถโดยสารงาน 02 พ.ย. 2025","amount": 100 }
     ],
     "image": "InfinitySpace.jpg",
+    "venueImage":"InfinitySpace_venue.png",
     "description": [
       {"main":"การเดินทางสู่ 'Infinity Space' กำลังจะเริ่มต้นขึ้นกับเทศกาลดนตรีที่ #ชาวเหนือสุด รอคอยเทศกาลดนตรีเหนือสุดหยุดโลก 4 : Infinity Spaceสัมผัสประสบการณ์แห่งจักรวาลดนตรีเกินกว่าที่คุณจะจินตนาการได้! ออกเดินทางสู่ห้วงอวกาศแห่งเสียงดนตรีอันไร้ขอบเขตพร้อมกับศิลปินแนวหน้าของประเทศไทย ",
       "ticket":"บัตรเข้างาน 1,190 บาท / บัตรรถโดยสาร 100 บาท",
@@ -145,6 +152,7 @@
 
     ],
     "image": "YeepengLanna2025.jpg",
+    "venueImage":"YeepengLanna2025_venue.png",
     "description": [
       {"main":"Loykrathong is celebrated throughout Thailand, but in Chiang Mai, home of Lanna culture, people also celebrateYee Peng by releasing lanterns, or Khomloy, into the sky. Yee Peng in Chiang Mai is an unforgettable sight and the best way to enjoy this cultural event is to attend a mass lantern release.",
       "ticket":"Premium Seat 6500 บาท / VIP Seat 5500 บาท / Standard Seat 4500 บาท",
@@ -173,11 +181,11 @@
       { "option": "2,200 16 พ.ย. 2025","amount": 2200 }
     ],
     "image": "aespa.jpg",
+    "venueImage":"aespa_venue.jpg",
     "description": [
       {"main":"SM True วาดเส้นทางใหม่เชื่อมโยงเกิร์ลกรุ๊ปที่เป็นศูนย์กลางแห่งความนิยมระดับโลก aespa มาพบกับแฟนคลับชาวไทยในเวิลด์ทัวร์คอนเสิร์ตครั้งที่สามการแสดงที่จะสะท้อนให้เห็นถึงตัวตนอันมีเอกลักษณ์ที่ไม่มีใครเทียบได้ของ aespa พร้อมส่งต่อพลังบวกผ่านบทเพลงฮิตที่สร้างกระแสไปทั่วโลก เพลงโซโล่ใหม่ของแต่ละสมาชิก เพลงจากอัลบั้มใหม่ และอีกมากมาย ร่วมด้วยโปรดักชันคุณภาพสูงที่จะยกระดับศักยภาพอันโดดเด่นของ aespa ได้อย่างมีประสิทธิภาพเมื่อความร่วมมือระหว่าง aespa และ MY เริ่มต้นขึ้น แกนกลางที่อยู่เหนือทุกจินตนาการจะถูกค้นพบอย่างน่าตื่นตาตื่นใจที่สุดในวันที่มีความหมายอันน่าจดจำนี้"
       ,"ticket":"(VIP PACKAGE) 6,500 บาท / (บัตรยืน) 5,900 บาท / 5,800 บาท / (บัตรยืน) 4,900 บาท  / 3,900 บาท / 2,900 บาท / 2,200 บาท",
-      "condition":"ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี จำกัดการซื้อบัตรทุกช่องทาง บัตรประชาชน 1 ใบ สามารถซื้อบัตรได้สูงสุด 4 ใบ ต่อ 2 รอบการแสดงเท่านั้น"
-    }],
+      "condition":"ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"}],
     "Category": "Concert"
   }
 ]

@@ -33,6 +33,7 @@ function ConcertDetail({ className }) {
   if (!concert) return <div className={className}>Not found</div>;
 
   const productImage = require(`../assets/${concert.image}`);
+  const venueImage = require(`../assets/${concert.venueImage}`);
 
   return (
       <div className={className}>
@@ -51,10 +52,14 @@ function ConcertDetail({ className }) {
             </section>
       
         <h1>Choose Ticket</h1>
-        <img className="ConcertDetail__image" src={productImage} alt={concert.name || 'Concert'} />
+        <img className="ConcertDetail__image" src={venueImage} alt={concert.name || 'Concert'} />
         <h2>Ticket Price</h2>
         <p>{concert.description?.[0]?.ticket}</p>
-        <TicketSelector prices={concert.prices} />
+        <TicketSelector  prices={concert.prices}
+  onChange={(item) => {
+    // item = { option, amount }
+    console.log('เลือกบัตร:', item);
+  }} />
         <Link to={`/select-ticket/${concert.id}`}><button type="button" className="hero__btn">Booking</button></Link>
     </div>
 
