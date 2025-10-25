@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
 const req = require.context('../assets', false, /\.(png|jpe?g|gif|webp|avif)$/);
 const imagesMap = req.keys().reduce((acc, key) => {
   const filename = key.replace('./', '');
@@ -41,7 +42,7 @@ ConcertCard.propTypes = {
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     name: PropTypes.string,
     location: PropTypes.string,
-    image: PropTypes.string, // ✅ แก้ตรงนี้
+    image: PropTypes.string,
   }),
   className: PropTypes.string,
 };

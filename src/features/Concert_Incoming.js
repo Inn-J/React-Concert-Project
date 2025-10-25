@@ -22,7 +22,7 @@ export default function ConcertList() {
 
   return (
     <Wrap>
-      <h1>Incoming</h1>
+      <Header>Incoming Concerts</Header>
       <Grid>
         {processedConcerts
         .filter((concert) => isWithinNextMonth(concert.date))
@@ -74,6 +74,14 @@ function parseConcertDate(concertDateStr) {
 
 const Wrap = styled.div`
   padding: 24px 24px 24px;
+`;
+
+const Header = styled.h1`
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #000;
+  text-align: center;
 `;
 
 const Grid = styled.ul`

@@ -56,7 +56,7 @@
       "ticket":"ZONE VIP 2,190 บาท / ZONE N 950 บาท / ZONE T 250 บาท",
       "condition":"ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"
     }],
-    "Category": "Event"
+    "Category": "Fan meeting"
   },
   {
     "id": 4,
@@ -76,7 +76,7 @@
       "ticket":"REGULAR PASS 650 บาท / VIP PASS 999 บาท / STUDENT PASS 490 บาท",
       "condition":"ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"
     }],
-    "Category": "Concert"
+    "Category": "Concert/Musical"
   },
   {
     "id": 5,
@@ -94,7 +94,7 @@
       "ticket":"Standing Ticket 1,400 บาท",
       "condition":"ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"
     }],
-    "Category": "Concert"
+    "Category": "Concert/Musical"
   },
   {
     "id": 6,
@@ -113,7 +113,7 @@
       "ticket":"บัตร VIP 1,290 บาท / บัตร Standard 890 บาท",
       "condition":"ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"
     }],
-    "Category": "Concert"
+    "Category": "Concert/Musical"
   },
   {
     "id": 7,
@@ -134,7 +134,7 @@
       "ticket":"บัตรเข้างาน 1,190 บาท / บัตรรถโดยสาร 100 บาท",
       "condition":"ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"
     }],
-    "Category": "Concert"
+    "Category": "Concert/Musical"
   },
   {
     "id": 8,
@@ -163,8 +163,8 @@
   {
     "id": 9,
     "name": "2025 aespa LIVE TOUR SYNK : aeXIS LINE in BANGKOK",
-    "date": "15 พ.ย. 2025 | 16 พ.ย. 2025",
-    "time": "16:00 | 18:00",
+    "date": "15 - 16 พ.ย. 2025",
+    "time": "16:00 - 18:00",
     "location": "IMPACT ARENA",
     "prices": [
       { "option": "6,500 (VIP PACKAGE) 15 พ.ย. 2025","amount": 6500 },
@@ -186,6 +186,77 @@
       {"main":"SM True วาดเส้นทางใหม่เชื่อมโยงเกิร์ลกรุ๊ปที่เป็นศูนย์กลางแห่งความนิยมระดับโลก aespa มาพบกับแฟนคลับชาวไทยในเวิลด์ทัวร์คอนเสิร์ตครั้งที่สามการแสดงที่จะสะท้อนให้เห็นถึงตัวตนอันมีเอกลักษณ์ที่ไม่มีใครเทียบได้ของ aespa พร้อมส่งต่อพลังบวกผ่านบทเพลงฮิตที่สร้างกระแสไปทั่วโลก เพลงโซโล่ใหม่ของแต่ละสมาชิก เพลงจากอัลบั้มใหม่ และอีกมากมาย ร่วมด้วยโปรดักชันคุณภาพสูงที่จะยกระดับศักยภาพอันโดดเด่นของ aespa ได้อย่างมีประสิทธิภาพเมื่อความร่วมมือระหว่าง aespa และ MY เริ่มต้นขึ้น แกนกลางที่อยู่เหนือทุกจินตนาการจะถูกค้นพบอย่างน่าตื่นตาตื่นใจที่สุดในวันที่มีความหมายอันน่าจดจำนี้"
       ,"ticket":"(VIP PACKAGE) 6,500 บาท / (บัตรยืน) 5,900 บาท / 5,800 บาท / (บัตรยืน) 4,900 บาท  / 3,900 บาท / 2,900 บาท / 2,200 บาท",
       "condition":"ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"}],
-    "Category": "Concert"
+    "Category": "Concert/Musical"
+  },
+  {
+    "id": 10,
+    "name": "FORTASTIC FIELD FEST",
+    "date": "30 พ.ย. 2025",
+    "time": "15:30 - 17:30",
+    "location": "MCC HALL THE MALL Ngamwongwan",
+    "prices": [
+      { "option": "Live Stream","amount": 1290 },
+      { "option": "Zone C","amount": 1900 },
+      { "option": "Zone B","amount": 3900 },
+      { "option": "Zone A","amount": 8900 },
+      { "option": "Diamond Field Zone","amount": 39900 }
+    ],
+    "image": "FFF.jpg",
+    "venueImage":"FFF_venue.jpg",
+    "description": [
+      {"main":"“FORTASTIC FIELD FEST” is ready to hit the stage with a blast in a vibrant Country Broadway theme!",
+      "ticket":"Live Stream 1,290 บาท / Zone C 1,900 บาท / Zone B 3,900 บาท / Zone A 8,900 บาท / Diamond Field Zone 39,900 บาท",
+      "condition":"ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"
+    }],
+    "Category": "Fan meeting",
+    "Banner": "FFF_Banner.jpg"
+  },
+  {
+    "id": 11,
+    "name": "MONSTER HUNTER ORCHESTRA CONCERT 2026",
+    "date": "21 - 22 ม.ค. 2026",
+    "time": "15:00",
+    "location": "Prinece Mahidol Hall, Mahidol University / หอประชุมมหิดลสิทธาคาร มหาวิทยาลัยมหิดล",
+    "prices": [
+      { "option": "Elder Seat","amount": 3500 },
+      { "option": "Apex Seat","amount": 3100 },
+      { "option": "Guardian Seat","amount": 2700 },
+      { "option": "Rare Seat","amount": 2300 },
+      { "option": "Wyvern Seat","amount": 2000 },
+      { "option": "Leviathan Seat","amount": 1650 },
+      { "option": "Beast Seat","amount": 1200 }
+    ],
+    "image": "MonHunt.jpg",
+    "venueImage":"MonHunt_venue.jpg",
+    "description": [
+      {"main":"Monster Hunter Orchestra Concert” in Thailand",
+      "ticket":"Elder Seat 3,500 บาท / Apex Seat 3,100 บาท / Guardian Seat 2,700 บาท / Rare Seat 2,300 บาท / Wyvern Seat 2,000 บาท / Leviathan Seat 1,650 บาท / Beast Seat 1,200 บาท",
+      "condition":"ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"
+    }],
+    "Category": "Concert/Musical",
+    "Banner": "MonHunt_Banner.jpg"
+  },
+  {
+    "id": 12,
+    "name": "QRRA: The Crowning Step",
+    "date": "14 ธ.ค. 2025",
+    "time": "13:00",
+    "location": "Centerpoint Entertainment",
+    "prices": [
+      { "option": "VIP Album","amount": 5200 },
+      { "option": "VIP","amount": 4500 },
+      { "option": "A","amount": 2199 },
+      { "option": "B","amount": 1299 }
+    ],
+    "image": "TGS.jpg",
+    "venueImage":"TGS_venue.jpg",
+    "description": [
+      {"main":"The crowning step of cherished memories between QRRA and Peony",
+      "ticket":"VIP Album 5,200 บาท / VIP 4,500 บาท / A 2,199 บาท / B 1,299 บาท",
+      "condition":"ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"
+    }],
+    "Category": "Concert/Musical",
+    "Banner": "TGS_Banner.jpg"
   }
+
 ]

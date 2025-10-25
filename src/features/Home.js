@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import ScrollConcert from './3DConcertlist';
+import ScrollConcert from './Concert_Recommed';
 import Concertlist from './Concertlist';
-import IncommingConcertlist from './IncomingConcertlist';
+import IncommingConcertlist from './Concert_Incoming';
+import Concert_Banner from './Concert_Banner';
 
 export default function Home() {
   return (
     <HomeWrap>
+      <ListSection>
+        <Concert_Banner />
+      </ListSection>
       <ScrollSection>
         <ScrollConcert />
       </ScrollSection>
@@ -32,7 +36,7 @@ const HomeWrap = styled.div`
 
 const ScrollSection = styled.section`
   width: 100%;
-  max-width: 1400px;
+  max-width: 1600px;
 `;
 
 const ListSection = styled.section`
