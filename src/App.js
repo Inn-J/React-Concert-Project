@@ -11,6 +11,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './features/Home';
 import SelectTicket from './features/GetTicket/GetTicketPage';
 import ScrollToTop from "./features/ScrollToTop";
+import PaymentPage from './features/Payment/PaymentPage';
 
 function App() {
   const products = useSelector((state) => state.products);
@@ -42,6 +43,7 @@ function App() {
           <Route path="/concert-detail/:id" element={<ConcertDetailPage/>} />
           <Route path="/login" element={<Login_Register />} />
           <Route path="/select-ticket/:id" element={<SelectTicket /> } />
+          <Route path="/payment/:id" element={<PaymentPage />} />
         </Routes>
       </Container>
     </>
