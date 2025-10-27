@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from 'react-redux';
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -32,10 +33,7 @@ function TicketSelector({ prices = [], onChange, className }) {
 
   const inc = (idx) => updateQty(idx, quantities[idx] + 1);
   const dec = (idx) => updateQty(idx, quantities[idx] - 1);
-  const onManualChange = (idx, e) => {
-    const val = Number(e.target.value);
-    updateQty(idx, Number.isNaN(val) ? 0 : val);
-  };
+  
 
   const subtotalOf = (p, q) => Number(p.amount || 0) * Number(q || 0);
 

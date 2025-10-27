@@ -1,15 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-import './App.css';
+//import './App.css';
 import { useEffect, useState } from 'react';
 import Navbar from './features/Navbar';
 import Container from './features/Container';
 import Login_Register from './features/Login_Register';
 import GlobalStyle from './features/GlobalStyle';
 import { fetchProducts } from './features/Product/actions';
-import ConcertDetail from './features/ConcertDetail'
+import ConcertDetailPage from './features/ConcertDetail/ConcertDetailPage'
 import { Routes, Route } from 'react-router-dom';
 import Home from './features/Home';
-import SelectTicket from './features/SelectTicket';
+import SelectTicket from './features/GetTicket/GetTicketPage';
+import ScrollToTop from "./features/ScrollToTop";
 
 function App() {
   const products = useSelector((state) => state.products);
@@ -34,11 +35,12 @@ function App() {
       <GlobalStyle />
       <Navbar />
       <Container>
+        <ScrollToTop/>
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/concert-detail/:id" element={<ConcertDetail/>} />
+          <Route path="/concert-detail/:id" element={<ConcertDetailPage/>} />
           <Route path="/login" element={<Login_Register />} />
-          <Route path="/select-ticket/:id" element={<SelectTicket />} />
+          <Route path="/select-ticket/:id" element={<SelectTicket /> } />
         </Routes>
       </Container>
     </>

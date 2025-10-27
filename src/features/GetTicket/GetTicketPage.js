@@ -1,0 +1,100 @@
+// src/features/ConcertDetail.jsx
+// --- ConcertDetail.jsx ---
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { useSelector,useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import TicketSelector from './TicketSelector';
+import HeroCard from '../ConcertDetail/HeroCard';
+
+function GetTicket({ className }) {
+  const { id } = useParams();
+      const concert = useSelector((state) =>
+    (state.products || []).find((p) => String(p.id) === String(id))
+  );
+
+  if (!concert) {
+    return <div className={className}>Not found…</div>;
+  }
+
+  const productImage = require(`../../assets/${concert.image}`);
+  const venueImage = require(`../../assets/${concert.venueImage}`);
+
+  return (
+      <div className={className}>
+            <section className="hero-section">
+              <HeroCard concert={concert} imageSrc={productImage}></HeroCard>             
+            </section>
+        <h1>Choose Ticket</h1>
+        <img className="ConcertDetail__image" src={venueImage} alt={concert.name || 'Concert'} />
+        <h2>Ticket Price</h2>
+        <p>{concert.description?.[0]?.ticket}</p>
+        <TicketSelector  prices={concert.prices}
+  onChange={(item) => {
+    // item = { option, amount }
+    console.log('เลือกบัตร:', item);
+  }} />
+        <Link to={`/`}><button type="button" className="hero__btn">Booking</button></Link>
+    </div>
+
+  );
+}
+
+export default styled(GetTicket)`
+  padding:  24px 24px;
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  gap: 5px;
+
+  .hero-section {
+ background-color:#FFE8DE;
+  width: 100vw;
+  height: 550px;
+  margin-left: calc(50% - 50vw);
+  background-size: cover;       /* ครอบเต็ม */
+  background-position: center;  /* จัดกึ่งกลาง */
+  background-repeat: no-repeat; /* ไม่วนซ้ำ */
+  padding: 80px 12px;           /* ขนาดพื้นที่ hero */
+  text-align: center;
+  color: #000000;
+  display: flex;                /* ✅ ใช้ flex ให้อยู่กลาง */
+  justify-content: center;
+  align-items: center;
+  }
+  
+
+  .ConcertDetail__image {
+    width: 100%;
+    height: auto;
+    max-width: 520px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  p {
+    margin-top: 1px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 730px;
+    text-align: left;
+  }  
+
+  .hero__btn {
+  bottom: 24px;
+  right: 24px;
+  background: linear-gradient(90deg, #FF7F49 30%, #FFBC6A 63%, #9CE3DC 100%);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+`;

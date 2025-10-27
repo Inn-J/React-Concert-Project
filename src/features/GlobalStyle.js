@@ -8,7 +8,9 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     background-color:#F7F3E9;
+    font-family: 'Prompt', sans-serif;
   }
+
     
     `;
 
