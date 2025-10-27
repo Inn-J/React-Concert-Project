@@ -1,24 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
-import ScrollConcert from './Concert_Recommed';
-import Concertlist from './Concertlist';
-import IncommingConcertlist from './Concert_Incoming';
-import Concert_Banner from './Concert_Banner';
+import ScrollConcert from './Homecomponent/Concert_Recommed';
+import Concertlist from './Homecomponent/Concert_list';
+import IncommingConcertlist from './Homecomponent/Concert_Incoming';
+import Concert_Banner from './Homecomponent/Concert_Banner';
 
-export default function Home() {
+export default function Home({ products }) {
   return (
     <HomeWrap>
       <ListSection>
-        <Concert_Banner />
+        <Concert_Banner products={products}/>
       </ListSection>
       <ScrollSection>
-        <ScrollConcert />
+        <ScrollConcert products={products}/>
       </ScrollSection>
       <ListSection>
-        <IncommingConcertlist />
+        <IncommingConcertlist products={products}/>
       </ListSection>
       <ListSection>
-        <Concertlist />
+        <Concertlist products={products}/>
       </ListSection>
     </HomeWrap>
   );

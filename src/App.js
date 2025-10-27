@@ -21,6 +21,7 @@ function App() {
       try {
         const response = await fetch('http://localhost:4000/products');
         const data = await response.json();
+        console.log("✅ Fetched data from API:", data); // เพิ่มตรงนี้
         dispatch(fetchProducts(data));
       } catch (error) {
         console.error(error);
@@ -37,7 +38,7 @@ function App() {
       <Container>
         <ScrollToTop/>
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Home products={products}/>} />
           <Route path="/concert-detail/:id" element={<ConcertDetailPage/>} />
           <Route path="/login" element={<Login_Register />} />
           <Route path="/select-ticket/:id" element={<SelectTicket /> } />

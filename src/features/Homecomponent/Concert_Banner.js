@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import concertsData from "../data/products.json";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-// ✅ โหลดภาพจาก assets
-const req = require.context("../assets", false, /\.(png|jpe?g|gif|webp|avif)$/);
+const req = require.context("../../assets", false, /\.(png|jpe?g|gif|webp|avif)$/);
 const imagesMap = req.keys().reduce((acc, key) => {
   const filename = key.replace("./", "");
   acc[filename] = req(key);
@@ -13,18 +11,19 @@ const imagesMap = req.keys().reduce((acc, key) => {
 }, {});
 const getImage = (filename) => imagesMap[filename] || imagesMap["placeholder.png"];
 
-export default function BannerConcert() {
+export default function BannerConcert( {products} ) {
   const [concerts, setConcerts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (Array.isArray(concertsData)) {
-      const withBanner = concertsData.filter(
+    
+    if (Array.isArray(products)) {
+      const withBanner = products.filter(
         (item) => item && (item.banner || item.Banner)
       );
       setConcerts(withBanner);
     }
-  }, []);
+  }, [products?.length]);
 
   const prev = () => {
     setCurrentIndex((prevIndex) =>
@@ -53,7 +52,6 @@ export default function BannerConcert() {
           <ChevronLeft size={32} />
         </Button>
 
-        {/* ✅ ห่อ Banner ทั้งหมดด้วยลิงก์ */}
         <StyledLink to={`/concert-detail/${currentConcert.id}`}>
           <BannerCard>
             <BannerImage

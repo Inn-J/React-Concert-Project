@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import concertsData from '../data/products.json';
-import ConcertCard from './ConcertCard';
+import ConcertCard from '../ConcertCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function ScrollConcert() {
+export default function ScrollConcert( { products } ) {
   const [concerts, setConcerts] = useState([]);
   const [current, setCurrent] = useState(0); // index ของการ์ดกลาง
 
   useEffect(() => {
-    if (Array.isArray(concertsData)) {
-      setConcerts(concertsData.filter(Boolean));
-    }
-  }, []);
+  if (Array.isArray(products)) {
+    setConcerts(products.filter(Boolean));
+  }
+  }, [products?.length]);
 
   const next = () => {
     setCurrent((prev) => (prev + 1) % concerts.length);

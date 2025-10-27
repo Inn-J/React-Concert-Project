@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import ConcertCard from "./ConcertCard";
-import concertsData from "../data/products.json";
+import ConcertCard from "../ConcertCard";
 
-export default function ConcertList() {
+export default function ConcertList({ products }) {
   const [concerts, setConcerts] = useState([]);
   const [category, setCategory] = useState("See All");
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    if (Array.isArray(concertsData)) {
-      setConcerts(concertsData.filter(Boolean));
+    if (Array.isArray(products)) {
+      setConcerts(products.filter(Boolean));
     }
-  }, []);
+  }, [products?.length]);
 
   const categories = [
     "See All",

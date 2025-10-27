@@ -1,15 +1,22 @@
 // src/features/ConcertList.jsx
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ConcertCard from './ConcertCard';
-import concertsData from '../data/products.json';
+import ConcertCard from '../ConcertCard';
 
-export default function ConcertList() {
+export default function ConcertList( {products}) {
   const [concerts, setConcerts] = useState([]);
 
   useEffect(() => {
-    setConcerts(Array.isArray(concertsData) ? concertsData.filter(Boolean) : []);
-  }, []);
+  if (Array.isArray(products)) {
+    setConcerts(products.filter(Boolean));
+  }
+  }, [products?.length]);
+
+  useEffect(() => {
+  if (Array.isArray(products)) {
+    setConcerts(products.filter(Boolean));
+  }
+}, [products?.length]);
 
   if (!concerts.length) {
     return <Wrap>ไม่มีคอนเสิร์ตให้แสดง</Wrap>;
