@@ -2,14 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import tickettoLogo from '../assets/Ticketto..svg';
+import profileIcon from '../assets/profile.svg';
 
 
 
 function Navbar({className}) {
   return (
     <header className={className}>
-      <Link to="/" className="brand">Ticketto</Link>
-      <Link to="/login" className="login">login</Link>
+      <Link to="/" className="brand">
+        <img src={tickettoLogo} alt="Ticketto Logo" />
+      </Link>
+      <Link to="/login" className="login">
+        <img src={profileIcon} alt="Profile Icon" />
+        <span>Login / Sign Up</span>
+      </Link>
     </header>
   );
 }
@@ -19,21 +26,44 @@ Navbar.propTypes = {
 };
 
 export default styled(Navbar)`
-   height: 48px;
-   width: 100%;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   background-color: #ffffff;
-   border-bottom: 1px solid #dee2e6;
-   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  height: 64px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 0 3rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  border-bottom: 1px solid #dee2e6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 
-   padding: 2rem;
-   position: fixed;
-   z-index: 100;
 
-   .brand {
-      font-weight: bold;
-      font-size: 1.5rem;
-    }
- `;
+  .brand img {
+    height: 25px;
+    width: auto;
+    display: block;
+  }
+
+  .login {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: opacity 0.2s ease;
+  }
+
+  .login img {
+    height: 22px;
+    width: 22px;
+  }
+
+  .login:hover {
+    opacity: 0.7;
+  }
+`;
