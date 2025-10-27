@@ -1,4 +1,4 @@
-const tickets = require('../data/ticketdata .json');
+const tickets = require('../data/ticketdata.json');
 
 exports.getTickets = (req, res) => res.json(tickets);
 exports.getTicketById = (req, res) => {
