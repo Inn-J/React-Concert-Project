@@ -12,7 +12,10 @@ Container.propTypes = {
 };
 
 export default styled(Container)`
-  justify-content: center;
-  min-height: 1600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;     /* ยืดหยุ่น */
+  padding-bottom: 64px;  /* กัน content ชิดก้นหน้าจอเกินไป */
   box-sizing: border-box;
 `;
