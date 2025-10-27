@@ -16,7 +16,7 @@ app.use("/", userRoutes);
 app.use("/", ticketRoutes);
 
 const dataDir = path.join(__dirname, 'data');
-const bookingsPath = path.join(__dirname, 'data', 'booking.json');
+const bookingsPath = path.join(__dirname, 'data', 'bookings.json');
 
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir);

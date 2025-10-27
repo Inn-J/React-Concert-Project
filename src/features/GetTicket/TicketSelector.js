@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from 'react-redux';
 import PropTypes from "prop-types";
 import styled from "styled-components";
@@ -7,23 +7,34 @@ function TicketSelector({ prices = [], onChange, className }) {
   // เก็บจำนวนต่อรายการ เช่น [0,2,1,...]
   const [quantities, setQuantities] = useState(() => prices.map(() => 0));
 
+  // อัปเดต onChange ลงใน ref เพื่อให้ callback เสถียร
+  const onChangeRef = useRef(onChange);
+  useEffect(() => {
+    onChangeRef.current = onChange;
+  }, [onChange]);
+
   // รีเซ็ตจำนวนเมื่อรายการเปลี่ยน
   useEffect(() => {
     setQuantities(prices.map(() => 0));
   }, [prices]);
 
-  // แจ้งผลออกไปเมื่อ quantities เปลี่ยน
+  // guard กัน call ซ้ำเมื่อ selected ไม่ได้เปลี่ยนจริง
+  const lastSelectedKeyRef = useRef("");
   useEffect(() => {
     const selected = prices
       .map((p, i) => ({ ...p, qty: quantities[i] }))
-      .filter((it) => it.qty > 0);
-    onChange?.(selected);
-  }, [quantities, prices, onChange]);
+      .filter((it) => Number(it.qty) > 0);
+    const key = JSON.stringify(selected);
+    if (key !== lastSelectedKeyRef.current) {
+      lastSelectedKeyRef.current = key;
+      onChangeRef.current?.(selected);
+    }
+  }, [quantities, prices]);
 
   const updateQty = (index, next) => {
     setQuantities((prev) => {
-      const max = 5
-      const safe = Math.max(0, Math.min(next, max));
+      const perItemMax = Number(prices[index]?.maxQty ?? 5);
+      const safe = Math.max(0, Math.min(Number(next) || 0, perItemMax));
       if (safe === prev[index]) return prev;
       const copy = [...prev];
       copy[index] = safe;
@@ -31,9 +42,8 @@ function TicketSelector({ prices = [], onChange, className }) {
     });
   };
 
-  const inc = (idx) => updateQty(idx, quantities[idx] + 1);
-  const dec = (idx) => updateQty(idx, quantities[idx] - 1);
-  
+  const inc = (idx) => updateQty(idx, (quantities[idx] ?? 0) + 1);
+  const dec = (idx) => updateQty(idx, (quantities[idx] ?? 0) - 1);
 
   const subtotalOf = (p, q) => Number(p.amount || 0) * Number(q || 0);
 
@@ -43,15 +53,16 @@ function TicketSelector({ prices = [], onChange, className }) {
         {prices.map((price, index) => {
           const qty = quantities[index] ?? 0;
           const amount = Number(price.amount || 0);
-          const maxQty = 5;
+          const maxQty = Number(price.maxQty ?? 5);
 
           return (
             <li key={index} className={`ticket-item ${qty > 0 ? "active" : ""}`}>
               <div className="ticket-info">
                 <span className="ticket-option">{price.option}</span>
-                <span className="ticket-price">
-                  {amount.toLocaleString()} บาท
-                </span>
+                <span className="ticket-price">{amount.toLocaleString()} บาท</span>
+                {Number.isFinite(maxQty) && (
+                  <span className="ticket-limit">ซื้อได้สูงสุด {maxQty} ใบ</span>
+                )}
               </div>
 
               <div className="qty-group" aria-label={`จำนวน ${price.option}`}>
@@ -64,8 +75,9 @@ function TicketSelector({ prices = [], onChange, className }) {
                 >
                   −
                 </button>
-                
+
                 <span>{qty}</span>
+
                 <button
                   type="button"
                   className="qty-btn"
@@ -85,11 +97,10 @@ function TicketSelector({ prices = [], onChange, className }) {
         })}
       </ul>
 
-      {/* สรุปรวมทั้งหมด (ถ้าอยากเอาออกลบส่วนนี้ได้) */}
       <div className="summary">
         <span>
           รายการที่เลือก:{" "}
-          {quantities.reduce((a, b) => a + (b > 0 ? 1 : 0), 0)} รายการ
+          {prices.reduce((count, _p, i) => count + ((quantities[i] ?? 0) > 0 ? 1 : 0), 0)} รายการ
         </span>
         <span className="summary-total">
           รวมทั้งหมด:{" "}
@@ -111,12 +122,13 @@ TicketSelector.propTypes = {
     PropTypes.shape({
       option: PropTypes.string.isRequired,
       amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-      maxQty: PropTypes.number, // ถ้ามีจำกัดจำนวนต่อรายการ
+      maxQty: PropTypes.number,
     })
   ),
   onChange: PropTypes.func,
   className: PropTypes.string,
 };
+
 
 export default styled(TicketSelector)`
   .ticket-list {

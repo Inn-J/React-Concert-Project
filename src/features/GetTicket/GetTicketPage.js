@@ -1,6 +1,6 @@
 // src/features/ConcertDetail.jsx
 // --- ConcertDetail.jsx ---
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
@@ -11,34 +11,75 @@ import HeroCard from '../ConcertDetail/HeroCard';
 
 function GetTicket({ className }) {
   const { id } = useParams();
-      const concert = useSelector((state) =>
+
+  const concert = useSelector((state) =>
     (state.products || []).find((p) => String(p.id) === String(id))
   );
 
-  if (!concert) {
-    return <div className={className}>Not found…</div>;
-  }
+  // เก็บ selections เป็น array
+  const [selectedTickets, setSelectedTickets] = useState([]);
 
-  const productImage = require(`../../assets/${concert.image}`);
-  const venueImage = require(`../../assets/${concert.venueImage}`);
+  // ทำให้ callback เสถียร ป้องกัน re-run effect ฝั่งลูก
+  const handleSelectionChange = useCallback((items) => {
+    setSelectedTickets(items);
+  }, []);
+  const productImage = useMemo(
+    () => require(`../../assets/${concert.image}`),
+    [concert.image]
+  );
+  const venueImage = useMemo(() => {
+    if (!concert.venueImage) return null;
+    try {
+      return require(`../../assets/${concert.venueImage}`);
+    } catch {
+      return null;
+    }
+  }, [concert.venueImage]);
+
+
+  if (!concert) return <div className={className}>Not found…</div>;
+
+  
+  const grandTotal = selectedTickets.reduce(
+    (s, it) => s + Number(it.amount || 0) * Number(it.qty || 0),
+    0
+  );
 
   return (
-      <div className={className}>
-            <section className="hero-section">
-              <HeroCard concert={concert} imageSrc={productImage}></HeroCard>             
-            </section>
-        <h1>Choose Ticket</h1>
-        <img className="ConcertDetail__image" src={venueImage} alt={concert.name || 'Concert'} />
-        <h2>Ticket Price</h2>
-        <p>{concert.description?.[0]?.ticket}</p>
-        <TicketSelector  prices={concert.prices}
-  onChange={(item) => {
-    // item = { option, amount }
-    console.log('เลือกบัตร:', item);
-  }} />
-        <Link to={`/`}><button type="button" className="hero__btn">Booking</button></Link>
-    </div>
+    <div className={className}>
+      <section className="hero-section">
+        <HeroCard concert={concert} imageSrc={productImage} />
+      </section>
 
+      <h1>Choose Ticket</h1>
+
+      {venueImage && (
+        <img className="ConcertDetail__image" src={venueImage} alt={concert.name || 'Concert'} />
+      )}
+
+      <h2>Ticket Price</h2>
+      <p>{concert.description?.[0]?.ticket}</p>
+
+      <TicketSelector prices={concert.prices} onChange={handleSelectionChange} />
+
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginTop: 12 }}>
+        
+
+        <Link
+          to={`/payment/${concert.id}`}
+          state={{ concert, selections: selectedTickets }} // ส่ง array ไปหน้า payment
+        >
+          <button
+            type="button"
+            className="hero__btn"
+            disabled={selectedTickets.length === 0}
+            title={selectedTickets.length === 0 ? 'โปรดเลือกบัตรก่อน' : 'ไปชำระเงิน'}
+          >
+            Booking
+          </button>
+        </Link>
+      </div>
+    </div>
   );
 }
 
