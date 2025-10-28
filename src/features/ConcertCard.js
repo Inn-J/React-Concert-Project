@@ -88,7 +88,7 @@ export default styled(ConcertCard)`
   }
   
   .ConcertCard__button{
-    background-color: #FF8B59;
+  background: linear-gradient(90deg, #FF7F49 30%, #FFBC6A 63%, #9CE3DC 100%);
   color: white;
   border: none;
   padding: 8px 16px;
