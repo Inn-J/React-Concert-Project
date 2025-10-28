@@ -1,7 +1,7 @@
 // src/features/ConcertList.jsx
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ConcertCard from '../ConcertCard';
+import ConcertCard from './ConcertCard';
 
 export default function ConcertList( {products}) {
   const [concerts, setConcerts] = useState([]);

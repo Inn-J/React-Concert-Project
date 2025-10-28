@@ -12,7 +12,6 @@ import Home from './features/Home';
 import SelectTicket from './features/GetTicket/GetTicketPage';
 import ScrollToTop from "./features/ScrollToTop";
 import PaymentPage from './features/Payment/PaymentPage';
-import AdminProducts from './features/Admin/ConcertEditer';
 
 function App() {
   const products = useSelector((state) => state.products);
@@ -50,7 +49,6 @@ function App() {
           <Route path="/login" element={<Login_Register />} />
           <Route path="/select-ticket/:id" element={<SelectTicket /> } />
           <Route path="/payment/:id" element={<PaymentPage />} />
-          <Route path="/admin/products" element={<AdminProducts />} />
         </Routes>
       </Container>
     </>

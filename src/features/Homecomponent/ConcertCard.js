@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const req = require.context('../assets', false, /\.(png|jpe?g|gif|webp|avif)$/);
+const req = require.context('../../assets', false, /\.(png|jpe?g|gif|webp|avif)$/);
 const imagesMap = req.keys().reduce((acc, key) => {
   const filename = key.replace('./', '');
   acc[filename] = req(key);

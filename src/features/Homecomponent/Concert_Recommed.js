@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ConcertCard from '../ConcertCard';
+import ConcertCard from './ConcertCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function ScrollConcert( { products } ) {
