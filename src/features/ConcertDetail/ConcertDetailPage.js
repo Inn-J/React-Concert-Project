@@ -26,9 +26,7 @@ function ConcertDetail({ className }) {
           <button type="button" className="heroCard__btn">Get Ticket</button>
         </Link>
        </HeroCard>
-       <Link to={`/admin`}>
-          <button type="button" className="heroCard__btn">Get Ticket</button>
-        </Link>
+
       </section>
         <h1>{concert.name}</h1>
         <img className="ConcertDetail__image" src={productImage} alt={concert.name || 'Concert'} />
