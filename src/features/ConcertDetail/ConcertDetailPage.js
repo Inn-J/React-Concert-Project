@@ -26,6 +26,9 @@ function ConcertDetail({ className }) {
           <button type="button" className="heroCard__btn">Get Ticket</button>
         </Link>
        </HeroCard>
+       <Link to={`/admin`}>
+          <button type="button" className="heroCard__btn">Get Ticket</button>
+        </Link>
       </section>
         <h1>{concert.name}</h1>
         <img className="ConcertDetail__image" src={productImage} alt={concert.name || 'Concert'} />
@@ -50,7 +53,11 @@ export default styled(ConcertDetail)`
   gap: 3px;
 
   .hero-section {
-  background-color:#FFE8DE;
+  background: radial-gradient(ellipse 80% 80% at 50% -20%, 
+    rgba(255, 138, 128, 0.95), 
+    rgba(255, 184, 140, 0.85) 40%, 
+    rgba(255, 216, 140, 0.7) 70%, 
+    rgba(255, 232, 222, 1) 100%);
   width: 100vw;
   height: 550px;
   margin-left: calc(50% - 50vw);
