@@ -23,11 +23,21 @@ exports.getBookingById = async (req, res) => {
   res.json(ticket);
 };
 
+exports.getBookingsByUser = async (req, res) => {
+  const tickets = await readBookingData();
+  const userTickets = tickets.filter((t) => String(t.userId) === String(req.params.userId));
+
+  if (userTickets.length === 0)
+    return res.status(404).json({ message: "No bookings found for this user" });
+
+  res.json(userTickets);
+};
+
 exports.createBooking = async (req, res) => {
   const tickets = await readBookingData();
   const ids = tickets.map((t) => Number(t.id)).filter(Number.isFinite);
   const nextId = ids.length ? Math.max(...ids) + 1 : 1;
-  const newItem = { id: nextId, ...req.body };
+  const newItem = { bookingId: nextId, ...req.body };
   tickets.push(newItem);
   await writeBookingData(tickets);
   res.status(201).json(newItem);

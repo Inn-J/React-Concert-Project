@@ -12,7 +12,11 @@ async function writeConcertData(data) {
   await fs.writeFile(concertDataPath, JSON.stringify(data, null, 2), "utf8");
 }
 
-exports.getProducts = (req, res) => res.json(products);
+exports.getProducts = async(req, res) => {
+  const products = await readConcertData();
+  res.json(products);
+};
+
 exports.getConcertById = (req, res) => {
   const concert = products.find(
     (c) => String(c.id) === String(req.params.id)
