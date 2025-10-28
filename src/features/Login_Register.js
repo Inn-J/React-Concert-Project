@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+// mock user data for profile page
+import users from '../data/users.json';
 
 // NOTE: I've removed the duplicate 'import React from 'react';' at the top.
 
@@ -25,43 +27,106 @@ function AuthModal({ className }) { // accept styled-components className
         }));
     };
 
+    // const handleLoginSubmit = (e) => {
+    //     e.preventDefault();
+
+    //     // LOGIN logic uses only email and password
+    //     const payload = {
+    //         user: {
+    //             email: formData.email,
+    //             password: formData.password,
+    //         }
+    //     };
+
+    //     console.log('Login Payload Submitted:', payload);
+    //     // API call to /users/sign_in here...
+    // };
+
     const handleLoginSubmit = (e) => {
         e.preventDefault();
 
-        // LOGIN logic uses only email and password
-        const payload = {
-            user: {
-                email: formData.email,
-                password: formData.password,
-            }
-        };
+        const foundUser = users.find(
+            (user) =>
+                user.email === formData.email &&
+                user.password === formData.password
+        );
 
-        console.log('Login Payload Submitted:', payload);
-        // API call to /users/sign_in here...
+        if (foundUser) {
+            alert(`Welcome back, ${foundUser.name}!`);
+            console.log('Login successful:', foundUser);
+
+            // Save user to localStorage
+            localStorage.setItem('currentUser', JSON.stringify(foundUser));
+
+            // Redirect to home
+            window.location.href = '/';
+        } else {
+            alert('Invalid email or password.');
+        }
     };
+
+
+
+    // const handleRegisterSubmit = (e) => {
+    //     e.preventDefault();
+
+    //     // REGISTRATION logic uses all fields
+    //     if (!formData.email || !formData.password || !formData.firstname || !formData.lastname || !formData.phone) {
+    //         alert('Please fill in all required fields for registration.');
+    //         return;
+    //     }
+
+    //     const payload = {
+    //         user: {
+    //             email: formData.email,
+    //             password: formData.password,
+    //             firstname: formData.firstname,
+    //             lastname: formData.lastname,
+    //             phone: formData.phone,
+    //         }
+    //     };
+
+    //     console.log('Registration Payload Submitted:', payload);
+    //     // API call to /users here...
+    // };
 
     const handleRegisterSubmit = (e) => {
         e.preventDefault();
 
-        // REGISTRATION logic uses all fields
-        if (!formData.email || !formData.password || !formData.firstname || !formData.lastname || !formData.phone) {
+        if (
+            !formData.email ||
+            !formData.password ||
+            !formData.firstname ||
+            !formData.lastname ||
+            !formData.phone
+        ) {
             alert('Please fill in all required fields for registration.');
             return;
         }
 
-        const payload = {
-            user: {
-                email: formData.email,
-                password: formData.password,
-                firstname: formData.firstname,
-                lastname: formData.lastname,
-                phone: formData.phone,
-            }
+        const isDuplicate = users.some((user) => user.email === formData.email);
+
+        if (isDuplicate) {
+            alert('❌ Email already registered.');
+            return;
+        }
+
+        // Simulate creating new user
+        const newUser = {
+            id: users.length + 1,
+            name: `${formData.firstname} ${formData.lastname}`,
+            email: formData.email,
+            password: formData.password,
+            phone: formData.phone,
         };
 
-        console.log('Registration Payload Submitted:', payload);
-        // API call to /users here...
+        console.log('✅ Registration simulated, new user:', newUser);
+        alert(`Welcome, ${newUser.name}! Registration simulated.`);
+
+        // Return to login form
+        setIsLoginView(true);
     };
+
 
     return (
         // The parent container manages the conditional display of the two forms
@@ -153,107 +218,107 @@ function AuthModal({ className }) { // accept styled-components className
                         onSubmit={handleRegisterSubmit}
                     >
                         <div className="form-inputs">
-                                {/* Email field for registration */}
-                                <div className="form-group email required user_email">
-                                    <label className="control-label email required" htmlFor="user_email_reg">
-                                        <abbr title="จำเป็น"></abbr> อีเมล
-                                    </label>
-                                    <input
-                                        className="form-control string email required"
-                                        required
-                                        aria-required="true"
-                                        placeholder="กรอกอีเมล"
-                                        type="email"
-                                        name="email"
-                                        id="user_email_reg"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                    />
-                                </div>
+                            {/* Email field for registration */}
+                            <div className="form-group email required user_email">
+                                <label className="control-label email required" htmlFor="user_email_reg">
+                                    <abbr title="จำเป็น"></abbr> อีเมล
+                                </label>
+                                <input
+                                    className="form-control string email required"
+                                    required
+                                    aria-required="true"
+                                    placeholder="กรอกอีเมล"
+                                    type="email"
+                                    name="email"
+                                    id="user_email_reg"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                />
+                            </div>
 
-                                {/* Password field for registration */}
-                                <div className="form-group password required user_password">
-                                    <label className="control-label password required" htmlFor="user_password_reg">
-                                        <abbr title="จำเป็น"></abbr> รหัสผ่าน
-                                    </label>
-                                    <input
-                                        className="form-control password required"
-                                        required
-                                        aria-required="true"
-                                        placeholder="กรอกรหัสผ่าน"
-                                        type="password"
-                                        name="password"
-                                        id="user_password_reg"
-                                        value={formData.password}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                {/* First Name field */}
-                                <div className="form-group string required user_firstname">
-                                    <label className="control-label string required" htmlFor="user_firstname">
-                                        <abbr title="จำเป็น"></abbr> ชื่อ
-                                    </label>
-                                    <input
-                                        className="form-control string required"
-                                        required
-                                        aria-required="true"
-                                        placeholder="ตามที่ปรากฏในบัตรประชาชนหรือหนังสือเดินทาง"
-                                        type="text"
-                                        name="firstname"
-                                        id="user_firstname"
-                                        value={formData.firstname}
-                                        onChange={handleChange}
-                                    />
-                                </div>
+                            {/* Password field for registration */}
+                            <div className="form-group password required user_password">
+                                <label className="control-label password required" htmlFor="user_password_reg">
+                                    <abbr title="จำเป็น"></abbr> รหัสผ่าน
+                                </label>
+                                <input
+                                    className="form-control password required"
+                                    required
+                                    aria-required="true"
+                                    placeholder="กรอกรหัสผ่าน"
+                                    type="password"
+                                    name="password"
+                                    id="user_password_reg"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            {/* First Name field */}
+                            <div className="form-group string required user_firstname">
+                                <label className="control-label string required" htmlFor="user_firstname">
+                                    <abbr title="จำเป็น"></abbr> ชื่อ
+                                </label>
+                                <input
+                                    className="form-control string required"
+                                    required
+                                    aria-required="true"
+                                    placeholder="ตามที่ปรากฏในบัตรประชาชนหรือหนังสือเดินทาง"
+                                    type="text"
+                                    name="firstname"
+                                    id="user_firstname"
+                                    value={formData.firstname}
+                                    onChange={handleChange}
+                                />
+                            </div>
 
-                                {/* Last Name field */}
-                                <div className="form-group string required user_lastname">
-                                    <label className="control-label string required" htmlFor="user_lastname">
-                                        <abbr title="จำเป็น"></abbr> นามสกุล
-                                    </label>
-                                    <input
-                                        className="form-control string required"
-                                        required
-                                        aria-required="true"
-                                        placeholder="ตามที่ปรากฏในบัตรประชาชนหรือหนังสือเดินทาง"
-                                        type="text"
-                                        name="lastname"
-                                        id="user_lastname"
-                                        value={formData.lastname}
-                                        onChange={handleChange}
-                                    />
-                                </div>
+                            {/* Last Name field */}
+                            <div className="form-group string required user_lastname">
+                                <label className="control-label string required" htmlFor="user_lastname">
+                                    <abbr title="จำเป็น"></abbr> นามสกุล
+                                </label>
+                                <input
+                                    className="form-control string required"
+                                    required
+                                    aria-required="true"
+                                    placeholder="ตามที่ปรากฏในบัตรประชาชนหรือหนังสือเดินทาง"
+                                    type="text"
+                                    name="lastname"
+                                    id="user_lastname"
+                                    value={formData.lastname}
+                                    onChange={handleChange}
+                                />
+                            </div>
 
-                                {/* Phone Number field */}
-                                <div className="row">
-                                    <p className="popover-content-phone-info hidden">
-                                        <small>เราจะทำการติดต่อคุณผ่านเบอร์นี้ หากมีการจัดส่งบัตรแข็ง หรือ บัตร SMS</small>
-                                    </p>
-                                    <div className="col-md-12">
-                                        <div className="form-group tel required user_phone">
-                                            <label className="control-label tel required" htmlFor="user_phone">
-                                                <abbr title="จำเป็น"></abbr> เบอร์โทรศัพท์มือถือ
-                                                <a className="text-muted" data-trigger="hover" data-toggle="popover-info" data-popover="prepared-content" data-placement="auto" data-popover-target-title=".popover-title-phone-info" data-popover-target-content=".popover-content-phone-info" href="" title="">
-                                                    <i className="far fa-info-circle"></i>
-                                                </a>
-                                            </label>
+                            {/* Phone Number field */}
+                            <div className="row">
+                                <p className="popover-content-phone-info hidden">
+                                    <small>เราจะทำการติดต่อคุณผ่านเบอร์นี้ หากมีการจัดส่งบัตรแข็ง หรือ บัตร SMS</small>
+                                </p>
+                                <div className="col-md-12">
+                                    <div className="form-group tel required user_phone">
+                                        <label className="control-label tel required" htmlFor="user_phone">
+                                            <abbr title="จำเป็น"></abbr> เบอร์โทรศัพท์มือถือ
+                                            <a className="text-muted" data-trigger="hover" data-toggle="popover-info" data-popover="prepared-content" data-placement="auto" data-popover-target-title=".popover-title-phone-info" data-popover-target-content=".popover-content-phone-info" href="" title="">
+                                                <i className="far fa-info-circle"></i>
+                                            </a>
+                                        </label>
 
-                                            <div className="intl-tel-input full-width">
-                                                <input
-                                                    className="form-control tel required"
-                                                    required
-                                                    aria-required="true"
-                                                    type="tel"
-                                                    name="phone"
-                                                    id="user_phone"
-                                                    placeholder="08X XXX XXXX"
-                                                    value={formData.phone}
-                                                    onChange={handleChange} // pass event handler directly
-                                                />
-                                            </div>
+                                        <div className="intl-tel-input full-width">
+                                            <input
+                                                className="form-control tel required"
+                                                required
+                                                aria-required="true"
+                                                type="tel"
+                                                name="phone"
+                                                id="user_phone"
+                                                placeholder="08X XXX XXXX"
+                                                value={formData.phone}
+                                                onChange={handleChange} // pass event handler directly
+                                            />
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
                             {/* --- SUBMIT BUTTON --- */}
                             <div className="form-actions">

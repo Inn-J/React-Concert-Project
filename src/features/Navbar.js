@@ -7,22 +7,33 @@ import profileIcon from '../assets/profile.svg';
 
 
 
-function Navbar({className}) {
+function Navbar({ className, currentUser }) {
   return (
     <header className={className}>
       <Link to="/" className="brand">
         <img src={tickettoLogo} alt="Ticketto Logo" />
       </Link>
-      <Link to="/login" className="login">
-        <img src={profileIcon} alt="Profile Icon" />
-        <span>Login / Sign Up</span>
-      </Link>
+
+      {currentUser ? (
+        // When user is logged in
+        <Link to="/profile" className="login">
+          <img src={profileIcon} alt="Profile Icon" />
+          <span>{currentUser.name}</span>
+        </Link>
+      ) : (
+        // When user not logged in
+        <Link to="/login" className="login">
+          <img src={profileIcon} alt="Profile Icon" />
+          <span>Login / Sign Up</span>
+        </Link>
+      )}
     </header>
   );
 }
 
 Navbar.propTypes = {
-  className: PropTypes.string.isRequired
+  className: PropTypes.string.isRequired,
+  currentUser: PropTypes.object, 
 };
 
 export default styled(Navbar)`
