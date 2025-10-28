@@ -59,7 +59,7 @@ exports.deleteBooking = async (req, res) => {
   if (idx === -1) return res.status(404).json({ message: "Not found" });
 
   const [removed] = bookings.splice(idx, 1);
-  await writeBookingData(tickets);
+  await writeBookingData(bookings);
 
   res.json({ success: true, removed });
 };

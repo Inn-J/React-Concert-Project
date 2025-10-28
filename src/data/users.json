@@ -30,5 +30,12 @@
     "email": "sk@sk.com",
     "password": "111",
     "phone": "00000000000"
+  },
+  {
+    "id": 6,
+    "name": "Tanakorn Kanoup",
+    "email": "tanakorngo63@gmail.com",
+    "password": "copy2548",
+    "phone": "0981180313"
   }
 ]
