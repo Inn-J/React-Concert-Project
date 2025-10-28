@@ -13,14 +13,14 @@ async function writeBookingData(data) {
 
 exports.getBookings = async (req, res) => {
   const bookings = await readBookingData();
-  res.json(tickets);
+  res.json(bookings);
 };
 
 exports.getBookingById = async (req, res) => {
   const bookings = await readBookingData();
   const booking = bookings.find((t) => String(t.id) === String(req.params.id));
-  if (!ticket) return res.status(404).json({ message: "Not found" });
-  res.json(ticket);
+  if (!booking) return res.status(404).json({ message: "Not found" });
+  res.json(booking);
 };
 
 exports.getBookingsByUser = async (req, res) => {
