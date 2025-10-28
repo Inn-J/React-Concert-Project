@@ -1,131 +1,99 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-// mock user data for profile page
-import users from '../data/users.json';
 
-// NOTE: I've removed the duplicate 'import React from 'react';' at the top.
+function AuthModal({ className }) {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    firstname: '',
+    lastname: '',
+    phone: '',
+  });
 
-function AuthModal({ className }) { // accept styled-components className
-    // State is sufficient for all fields in both forms
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-        firstname: '',
-        lastname: '',
-        phone: '',
-    });
+  const [isLoginView, setIsLoginView] = useState(true);
 
-    // State to manage which view is visible (Login or Registration)
-    const [isLoginView, setIsLoginView] = useState(true);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        // The name attribute in the JSX must match the key in formData
-        setFormData(prev => ({
-            ...prev,
-            [name]: value,
-        }));
+  // ------------------ LOGIN ------------------
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch('http://localhost:4000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert('❌ ' + data.message);
+        return;
+      }
+
+      // Save user to localStorage
+      localStorage.setItem('currentUser', JSON.stringify(data.user));
+      alert(`✅ Welcome back, ${data.user.name}!`);
+
+      // Redirect to home
+      window.location.href = '/';
+    } catch (err) {
+      console.error(err);
+      alert('เกิดข้อผิดพลาดขณะเข้าสู่ระบบ');
+    }
+  };
+
+  // ------------------ REGISTER ------------------
+  const handleRegisterSubmit = async (e) => {
+    e.preventDefault();
+
+    if (
+      !formData.email ||
+      !formData.password ||
+      !formData.firstname ||
+      !formData.lastname ||
+      !formData.phone
+    ) {
+      alert('Please fill in all required fields for registration.');
+      return;
+    }
+
+    const newUser = {
+      name: `${formData.firstname} ${formData.lastname}`,
+      email: formData.email,
+      password: formData.password,
+      phone: formData.phone,
     };
 
-    // const handleLoginSubmit = (e) => {
-    //     e.preventDefault();
+    try {
+      const res = await fetch('http://localhost:4000/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newUser),
+      });
 
-    //     // LOGIN logic uses only email and password
-    //     const payload = {
-    //         user: {
-    //             email: formData.email,
-    //             password: formData.password,
-    //         }
-    //     };
+      const data = await res.json();
 
-    //     console.log('Login Payload Submitted:', payload);
-    //     // API call to /users/sign_in here...
-    // };
+      if (!res.ok) {
+        alert('❌ ' + data.message);
+        return;
+      }
 
-    const handleLoginSubmit = (e) => {
-        e.preventDefault();
+      alert('✅ Registered successfully!');
+      setIsLoginView(true); // กลับไปหน้า login
+    } catch (err) {
+      console.error(err);
+      alert('เกิดข้อผิดพลาดขณะสมัครสมาชิก');
+    }
+  };
 
-        const foundUser = users.find(
-            (user) =>
-                user.email === formData.email &&
-                user.password === formData.password
-        );
-
-        if (foundUser) {
-            alert(`Welcome back, ${foundUser.name}!`);
-            console.log('Login successful:', foundUser);
-
-            // Save user to localStorage
-            localStorage.setItem('currentUser', JSON.stringify(foundUser));
-
-            // Redirect to home
-            window.location.href = '/';
-        } else {
-            alert('Invalid email or password.');
-        }
-    };
-
-
-
-    // const handleRegisterSubmit = (e) => {
-    //     e.preventDefault();
-
-    //     // REGISTRATION logic uses all fields
-    //     if (!formData.email || !formData.password || !formData.firstname || !formData.lastname || !formData.phone) {
-    //         alert('Please fill in all required fields for registration.');
-    //         return;
-    //     }
-
-    //     const payload = {
-    //         user: {
-    //             email: formData.email,
-    //             password: formData.password,
-    //             firstname: formData.firstname,
-    //             lastname: formData.lastname,
-    //             phone: formData.phone,
-    //         }
-    //     };
-
-    //     console.log('Registration Payload Submitted:', payload);
-    //     // API call to /users here...
-    // };
-
-    const handleRegisterSubmit = (e) => {
-        e.preventDefault();
-
-        if (
-            !formData.email ||
-            !formData.password ||
-            !formData.firstname ||
-            !formData.lastname ||
-            !formData.phone
-        ) {
-            alert('Please fill in all required fields for registration.');
-            return;
-        }
-
-        const isDuplicate = users.some((user) => user.email === formData.email);
-
-        if (isDuplicate) {
-            alert('❌ Email already registered.');
-            return;
-        }
-
-        // Simulate creating new user
-        const newUser = {
-            id: users.length + 1,
-            name: `${formData.firstname} ${formData.lastname}`,
-            email: formData.email,
-            password: formData.password,
-            phone: formData.phone,
-        };
-
-        console.log('✅ Registration simulated, new user:', newUser);
-        alert(`Welcome, ${newUser.name}! Registration simulated.`);
-
-        // Return to login form
-        setIsLoginView(true);
-    };
 
 
     return (
