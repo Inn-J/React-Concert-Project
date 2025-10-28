@@ -389,10 +389,11 @@ export default styled(AuthModal)`
     transition: border-color 120ms ease-in-out, box-shadow 120ms ease-in-out;
   }
 
+  /* ใช้สี #9CE3DC สำหรับโฟกัสและเงา (ต้องมีสีนี้ตามคำขอ) */
   input.form-control:focus {
     outline: none;
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+    border-color: #9CE3DC;
+    box-shadow: 0 0 0 4px rgba(156,227,220,0.14);
   }
 
   .btn {
@@ -402,12 +403,23 @@ export default styled(AuthModal)`
     border-radius: 6px;
     font-weight: 600;
     cursor: pointer;
+    transition: box-shadow 150ms ease, transform 120ms ease;
   }
 
+  /* ปรับปุ่มหลักเป็น gradient จาก #FF7F49 -> #FFBC6A */
   .btn-primary {
-    background: linear-gradient(180deg,#2563eb,#1e40af);
+    background: linear-gradient(180deg,#FF7F49,#FFBC6A);
     color: #fff;
     border: none;
+    box-shadow: 0 6px 14px rgba(255,127,73,0.08);
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 26px rgba(255,124,66,0.12);
+  }
+  .btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 6px rgba(156,227,220,0.16); /* focus uses #9CE3DC */
   }
 
   /* เพิ่มช่องว่างรอบปุ่ม submit */
@@ -443,8 +455,8 @@ export default styled(AuthModal)`
   .intl-tel-input input.form-control:focus,
   .intl-tel-input input[type="tel"]:focus {
     outline: none;
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+    border-color: #9CE3DC;
+    box-shadow: 0 0 0 4px rgba(156,227,220,0.14);
   }
 
   /* Phone input wrapper */
@@ -470,15 +482,23 @@ export default styled(AuthModal)`
     color: #6b7280;
   }
 
+  /* ลิงก์ใช้สีหลัก #FF7F49 และโฟกัสแสดงแสง #9CE3DC */
   a.show-signup,
   a.show-login {
-    color: #2563eb;
+    color: #FF7F49;
     text-decoration: none;
     cursor: pointer;
   }
   a.show-signup:hover,
   a.show-login:hover {
     text-decoration: underline;
+    color: #FFBC6A;
+  }
+  a.show-signup:focus,
+  a.show-login:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(156,227,220,0.12);
+    border-radius: 4px;
   }
 
   /* Or line */
