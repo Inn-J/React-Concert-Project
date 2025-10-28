@@ -9,7 +9,7 @@ import { fetchProducts } from './features/Product/actions';
 import ConcertDetailPage from './features/ConcertDetail/ConcertDetailPage'
 import { Routes, Route } from 'react-router-dom';
 import Home from './features/Home';
-import SelectTicket from './features/GetTicket/GetTicketPage';
+import SelectTicket from './features/BuyTicket/BuyTicketPage';
 import ScrollToTop from "./features/ScrollToTop";
 import PaymentPage from './features/Payment/PaymentPage';
 import ProfilePage from './features/Profile/ProfilePage';

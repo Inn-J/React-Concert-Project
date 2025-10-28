@@ -5,12 +5,13 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import TicketSelector from './TicketSelector';
 import HeroCard from '../ConcertDetail/HeroCard';
 
 function GetTicket({ className }) {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const concert = useSelector((state) =>
     (state.products || []).find((p) => String(p.id) === String(id))
@@ -45,6 +46,19 @@ function GetTicket({ className }) {
     0
   );
 
+ 
+    const handleBooking = () => {
+    if (selectedTickets.length === 0) {
+      alert("กรุณาเลือกบัตรก่อนทำการจอง");
+      return; // ไม่เปลี่ยนหน้า
+    }
+
+    navigate(`/payment/${concert.id}`, {
+      state: { concert, selections: selectedTickets },
+    });
+  };
+
+
   return (
     <div className={className}>
       <section className="hero-section">
@@ -54,7 +68,7 @@ function GetTicket({ className }) {
       <h1>Choose Ticket</h1>
 
       {venueImage && (
-        <img className="ConcertDetail__image" src={venueImage} alt={concert.name || 'Concert'} />
+        <img className="ConcertVenue__image" src={venueImage} alt={concert.name || 'Concert'} />
       )}
 
       <h2>Ticket Price</h2>
@@ -63,21 +77,7 @@ function GetTicket({ className }) {
       <TicketSelector prices={concert.prices} onChange={handleSelectionChange} />
 
       <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginTop: 12 }}>
-        
-
-        <Link
-          to={`/payment/${concert.id}`}
-          state={{ concert, selections: selectedTickets }} // ส่ง array ไปหน้า payment
-        >
-          <button
-            type="button"
-            className="hero__btn"
-            disabled={selectedTickets.length === 0}
-            title={selectedTickets.length === 0 ? 'โปรดเลือกบัตรก่อน' : 'ไปชำระเงิน'}
-          >
-            Booking
-          </button>
-        </Link>
+      <button type="button" className="booking__btn" onClick={handleBooking}>Booking</button>
       </div>
     </div>
   );
@@ -111,7 +111,7 @@ export default styled(GetTicket)`
   }
   
 
-  .ConcertDetail__image {
+  .ConcertVenue__image {
     width: 100%;
     height: auto;
     max-width: 520px;
@@ -130,7 +130,7 @@ export default styled(GetTicket)`
     text-align: left;
   }  
 
-  .hero__btn {
+  .booking__btn {
   bottom: 24px;
   right: 24px;
   background: linear-gradient(90deg, #FF7F49 30%, #FFBC6A 63%, #9CE3DC 100%);
