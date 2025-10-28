@@ -12,6 +12,7 @@ import Home from './features/Home';
 import SelectTicket from './features/GetTicket/GetTicketPage';
 import ScrollToTop from "./features/ScrollToTop";
 import PaymentPage from './features/Payment/PaymentPage';
+import ProfilePage from './features/Profile/ProfilePage';
 
 function App() {
   const products = useSelector((state) => state.products);
@@ -40,15 +41,16 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Navbar currentUser={currentUser} />
+      <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Container>
-        <ScrollToTop/>
+        <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Home products={products}/>} />
-          <Route path="/concert-detail/:id" element={<ConcertDetailPage/>} />
+          <Route path="/" element={<Home products={products} />} />
+          <Route path="/concert-detail/:id" element={<ConcertDetailPage />} />
           <Route path="/login" element={<Login_Register />} />
-          <Route path="/select-ticket/:id" element={<SelectTicket /> } />
+          <Route path="/select-ticket/:id" element={<SelectTicket />} />
           <Route path="/payment/:id" element={<PaymentPage />} />
+          <Route path="/profile" element={<ProfilePage currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         </Routes>
       </Container>
     </>
