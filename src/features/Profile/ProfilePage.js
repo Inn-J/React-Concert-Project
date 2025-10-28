@@ -155,9 +155,9 @@ export default styled(ProfilePage)`
   position: relative;
   /* Remove the solid background here */
   background: radial-gradient(ellipse 80% 80% at 50% -20%, 
-    rgba(255, 138, 128, 0.6), 
-    rgba(255, 184, 140, 0.4) 40%, 
-    rgba(255, 216, 140, 0.2) 70%, 
+    rgba(255, 138, 128, 0.95), 
+    rgba(255, 184, 140, 0.85) 40%, 
+    rgba(255, 216, 140, 0.7) 70%, 
     rgba(255, 255, 255, 1) 100%);
   font-family: Arial, sans-serif;
 
