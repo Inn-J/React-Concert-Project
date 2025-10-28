@@ -46,7 +46,6 @@ export default function BannerConcert( {products} ) {
 
   return (
     <Wrap>
-      <h1>Recommended Events</h1>
       <CarouselContainer>
         <Button onClick={prev}>
           <ChevronLeft size={32} />
@@ -72,7 +71,13 @@ export default function BannerConcert( {products} ) {
 const Wrap = styled.div`
   padding: 24px 0;
   text-align: center;
-  background-color: #f8f4ec;
+  
+  
+  background: radial-gradient(ellipse 80% 80% at 50% -20%, 
+    rgba(255, 138, 128, 0.95), 
+    rgba(255, 184, 140, 0.85) 40%, 
+    rgba(255, 216, 140, 0.7) 70%, 
+    rgba(248, 244, 236, 1) 100%);
 
   h1 {
     font-weight: 700;
@@ -100,6 +105,7 @@ const StyledLink = styled(Link)`
 `;
 
 const BannerCard = styled.div`
+margin-top:50px;
   position: relative;
   width: 1200px;
   height: 550px;
