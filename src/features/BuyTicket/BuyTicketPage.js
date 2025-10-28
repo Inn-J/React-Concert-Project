@@ -1,9 +1,6 @@
-// src/features/ConcertDetail.jsx
-// --- ConcertDetail.jsx ---
 import React, { useMemo, useState, useCallback } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import TicketSelector from './TicketSelector';
@@ -24,10 +21,12 @@ function GetTicket({ className }) {
   const handleSelectionChange = useCallback((items) => {
     setSelectedTickets(items);
   }, []);
+
   const productImage = useMemo(
     () => require(`../../assets/${concert.image}`),
     [concert.image]
   );
+
   const venueImage = useMemo(() => {
     if (!concert.venueImage) return null;
     try {
@@ -46,15 +45,20 @@ function GetTicket({ className }) {
     0
   );
 
- 
+  const user = JSON.parse(localStorage.getItem("currentUser") || "null");
+
     const handleBooking = () => {
+    if (!user) {
+      alert("กรุณาเข้าสู่ระบบ");
+      return;
+    }
     if (selectedTickets.length === 0) {
       alert("กรุณาเลือกบัตรก่อนทำการจอง");
-      return; // ไม่เปลี่ยนหน้า
+      return;
     }
 
     navigate(`/payment/${concert.id}`, {
-      state: { concert, selections: selectedTickets },
+      state: { concert, selections: selectedTickets, grandTotal },
     });
   };
 
