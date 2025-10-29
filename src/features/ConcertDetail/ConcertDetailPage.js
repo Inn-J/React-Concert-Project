@@ -10,15 +10,16 @@ function ConcertDetail({ className }) {
   const navigate = useNavigate();
 
       const concert = useSelector((state) =>
-    (state.products || []).find((p) => String(p.id) === String(id))
+    (state.concerts || []).find((p) => String(p.id) === String(id))
   );
 
   if (!concert) {
     return <div className={className}>Loading / Not found…</div>;
   }
-  const productImage = require(`../../assets/${concert.image}`);
+  const concertImage = require(`../../assets/${concert.image}`);
 
   const user = JSON.parse(localStorage.getItem("currentUser") || "null");
+
   const handleGetTicket = () => {
     if (!user) {
       alert("กรุณาเข้าสู่ระบบ");
@@ -30,13 +31,13 @@ function ConcertDetail({ className }) {
   return (
     <div className={className}>
       <section className="hero-section">
-       <HeroCard concert={concert} imageSrc={productImage}>
+       <HeroCard concert={concert} imageSrc={concertImage}>
           <button type="button" className="getTicket__btn" onClick={handleGetTicket}>Get Ticket</button>
        </HeroCard>
 
       </section>
         <h1>{concert.name}</h1>
-        <img className="ConcertDetail__image" src={productImage} alt={concert.name || 'Concert'} />
+        <img className="ConcertDetail__image" src={concertImage} alt={concert.name || 'Concert'} />
         <h2>Description</h2>
         <p>{concert.description?.[0]?.main}</p>
         <h2>Location</h2>

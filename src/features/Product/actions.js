@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
 
-export const fetchProducts = createAction('FETCH_PRODUCTS');
-export const addProduct = createAction('ADD_PRODUCT');
-export const updateProduct = createAction('UPDATE_PRODUCT');
-export const deleteProduct = createAction('DELETE_PRODUCT');
+export const fetchConcerts = createAction('FETCH_CONCERTS');
+export const addConcert = createAction('ADD_CONCERT');
+export const updateConcert = createAction('UPDATE_CONCERT');
+export const deleteConcert = createAction('DELETE_CONCERT');

@@ -11,7 +11,7 @@ function GetTicket({ className }) {
   const navigate = useNavigate();
 
   const concert = useSelector((state) =>
-    (state.products || []).find((p) => String(p.id) === String(id))
+    (state.concerts || []).find((p) => String(p.id) === String(id))
   );
 
   // เก็บ selections เป็น array
@@ -22,7 +22,7 @@ function GetTicket({ className }) {
     setSelectedTickets(items);
   }, []);
 
-  const productImage = useMemo(
+  const concertImage = useMemo(
     () => require(`../../assets/${concert.image}`),
     [concert.image]
   );
@@ -66,7 +66,7 @@ function GetTicket({ className }) {
   return (
     <div className={className}>
       <section className="hero-section">
-        <HeroCard concert={concert} imageSrc={productImage} />
+        <HeroCard concert={concert} imageSrc={concertImage} />
       </section>
 
       <h1>Choose Ticket</h1>

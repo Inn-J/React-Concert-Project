@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import productReducers from '../features/reducers';
+import concertReducers from '../features/reducers';
 
 export default configureStore({
   reducer: {
-    products: productReducers
+    concerts: concertReducers
   }
 });
