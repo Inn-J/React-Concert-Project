@@ -62,7 +62,7 @@ function ProfilePage({ currentUser, setCurrentUser, className }) {
               time: booking.concertTime || "TBA",
               location: booking.concertLocation || "TBA",
               option: item.option,
-              imageUrl: concertImage,
+              imageUrl: booking.concertImage
             };
           })
         );

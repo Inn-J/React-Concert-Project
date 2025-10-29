@@ -9,7 +9,7 @@ function MyTicketCard({ ticket, className }) {
   // Dynamically load ticket image with fallback
   let ticketImageSrc;
   try {
-    ticketImageSrc = require(`../../assets/${ticket.image}`);
+    ticketImageSrc = require(`../../assets/${ticket.imageUrl}`);
   } catch (err) {
     ticketImageSrc = require(`../../assets/default.png`);
   }
@@ -83,6 +83,7 @@ export default styled(MyTicketCard)`
     height: 140px;
     object-fit: cover;
     flex-shrink: 0;
+    object-position: top;
     background: linear-gradient(135deg, #ff9a76 0%, #ffb88c 100%);
     border-radius: 16px;
     margin: 12px;

@@ -102,6 +102,7 @@ function PaymentPage({ className }) {
         concertName: concert.name,
         concertDate: concert.date,
         concertTime: concert.time,
+        concertImage: concert.image,
         concertLocation: concert.location,
         lineItems,                 // ✅ เก็บทุกรายการ (รองรับทั้ง single/multi)
         totalQuantity: totalQty,
