@@ -23,48 +23,45 @@ function ProfilePage({ currentUser, setCurrentUser, className }) {
         const currentUser = JSON.parse(savedUser);
         setUser(currentUser);
 
-        const [ticketRes, bookingRes] = await Promise.all([
-          fetch("http://localhost:4000/ticketdata"),
-          fetch("http://localhost:4000/bookings"),
-        ]);
+        // Fetch bookings data
+        const bookingRes = await fetch("http://localhost:4000/bookings");
 
-        if (!ticketRes.ok || !bookingRes.ok) {
-          throw new Error("Failed to fetch ticket or booking data");
+        if (!bookingRes.ok) {
+          throw new Error("Failed to fetch booking data");
         }
 
-        const ticketData = await ticketRes.json();
         const bookingData = await bookingRes.json();
 
-        const userTickets = ticketData.find((t) => t.Userid === currentUser.id);
+        // Filter bookings by current user (assuming userId field in booking)
+        // If you store userId in the booking, filter by it
+        // For now, we'll map all bookings - you can add userId filter as needed
+        const userBookings = bookingData; // Add .filter(b => b.userId === currentUser.id) if needed
 
-        if (userTickets?.Tickets) {
-          const combinedTickets = userTickets.Tickets.map((t) => {
-            const booking = bookingData.find(
-              (b) => parseInt(b.concertId) === t.ConcertId
-            );
-            return {
-              id: t.ConcertId,
-              eventName: booking ? booking.concertName : "Unknown Event",
-              date: booking
-                ? new Date(booking.date).toLocaleDateString("en-GB")
-                : "TBA",
-              time: booking
-                ? new Date(booking.date).toLocaleTimeString([], {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })
-                : "",
-              location: booking?.location || "Bangkok Arena",
-              quantity: t.Quantity,
-              imageUrl: booking ? `/images/${t.ConcertId}.jpg` : "/images/default.jpg",
-            };
-          });
-          setTickets(combinedTickets);
-        } else {
-          setTickets([]);
-        }
+        // Transform bookings to ticket format
+        const transformedTickets = userBookings.flatMap((booking) => {
+          return booking.lineItems.map((item, index) => ({
+            id: `${booking.id}-${index}`,
+            bookingId: booking.id,
+            eventName: booking.concertName,
+            date: new Date(booking.date).toLocaleDateString("en-GB"),
+            time: new Date(booking.date).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            }),
+            location: "Bangkok Arena", // Default location, add to booking if available
+            option: item.option,
+            quantity: item.quantity,
+            unitPrice: item.unitPrice,
+            lineTotal: item.lineTotal,
+            imageUrl: `/images/${booking.concertId}.jpg`,
+            paymentMethod: booking.paymentMethod,
+            slipUploaded: booking.slipUploaded,
+          }));
+        });
+
+        setTickets(transformedTickets);
       } catch (error) {
-        console.error("❌ Error loading profile data:", error);
+        console.error(" Error loading profile data:", error);
       } finally {
         setLoading(false);
       }
@@ -153,15 +150,12 @@ export default styled(ProfilePage)`
   min-height: 100vh;
   width: 100%;
   position: relative;
-  /* Remove the solid background here */
   background: radial-gradient(ellipse 80% 80% at 50% -20%, 
     rgba(255, 138, 128, 0.95), 
     rgba(255, 184, 140, 0.85) 40%, 
     rgba(255, 216, 140, 0.7) 70%, 
-    rgba(255, 255, 255, 1) 100%);
+    #f8f3e9 100%);
   font-family: Arial, sans-serif;
-
-  /* Remove the ::before if moving gradient to main element */
 
   .loading,
   .notLoggedIn {
@@ -175,7 +169,7 @@ export default styled(ProfilePage)`
     h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
-      color: #333; /* Changed from #fff for better visibility */
+      color: #333;
     }
 
     a {
@@ -203,9 +197,9 @@ export default styled(ProfilePage)`
     .title {
       font-size: 2.5rem;
       font-weight: 700;
-      color: #333; /* Changed from #fff */
+      color: #333;
       margin-bottom: 2rem;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Added for depth */
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1); 
     }
 
     .main {
