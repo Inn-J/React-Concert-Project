@@ -18,7 +18,8 @@ function PaymentPage({ className }) {
   );
   const concert = stateConcert || storeConcert;
 
-  const user = useSelector((state) => state.user);
+  //const user = useSelector((state) => state.user);
+  const user = JSON.parse(localStorage.getItem('currentUser'));
 
   const [booked, setBooked] = useState(false);
   const [step, setStep] = useState(1);
@@ -102,8 +103,7 @@ function PaymentPage({ className }) {
         lineItems,                 // ✅ เก็บทุกรายการ (รองรับทั้ง single/multi)
         totalQuantity: totalQty,
         totalPrice: grandTotal,
-        userName: user?.name,
-        email: user?.email,
+        userId: user?.id,
         paymentMethod,
         date: new Date().toISOString(),
         ...(paymentMethod === 'Credit Card' ? { cardInfo } : {}),
@@ -112,6 +112,9 @@ function PaymentPage({ className }) {
 
       await axios.post('http://localhost:4000/bookings', bookingData);
       setBooked(true);
+      setTimeout(() => {
+        navigate('/');
+      }, 5000);
     } catch (error) {
       console.error('Error saving booking:', error);
       alert('เกิดข้อผิดพลาดในการบันทึกการจอง');
@@ -267,7 +270,9 @@ function PaymentPage({ className }) {
         )}
 
         {booked && (
-          <p className="success">✅ ชำระเงินสำเร็จ! ระบบได้บันทึกคำสั่งซื้อของคุณแล้ว</p>
+          <p className="success">✅ ชำระเงินสำเร็จ! ระบบได้บันทึกคำสั่งซื้อของคุณแล้ว<br />
+          กำลังนำคุณกลับไปยังหน้าหลัก...
+          </p>
         )}
       </div>
     </div>

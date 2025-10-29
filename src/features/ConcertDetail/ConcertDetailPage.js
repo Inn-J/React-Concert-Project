@@ -1,35 +1,43 @@
-// src/features/ConcertDetail.jsx
-// --- ConcertDetail.jsx ---
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector} from 'react-redux';
 import HeroCard from './HeroCard';
+
 function ConcertDetail({ className }) {
   const { id } = useParams();
+  const navigate = useNavigate();
+
       const concert = useSelector((state) =>
-    (state.products || []).find((p) => String(p.id) === String(id))
+    (state.concerts || []).find((p) => String(p.id) === String(id))
   );
 
   if (!concert) {
     return <div className={className}>Loading / Not found…</div>;
   }
-  const productImage = require(`../../assets/${concert.image}`);
+  const concertImage = require(`../../assets/${concert.image}`);
+
+  const user = JSON.parse(localStorage.getItem("currentUser") || "null");
+
+  const handleGetTicket = () => {
+    if (!user) {
+      alert("กรุณาเข้าสู่ระบบ");
+      return;
+    }
+    navigate(`/select-ticket/${concert.id}`);
+  };
   
   return (
     <div className={className}>
       <section className="hero-section">
-       <HeroCard concert={concert} imageSrc={productImage}>
-        <Link to={`/select-ticket/${concert.id}`}>
-          <button type="button" className="heroCard__btn">Get Ticket</button>
-        </Link>
+       <HeroCard concert={concert} imageSrc={concertImage}>
+          <button type="button" className="getTicket__btn" onClick={handleGetTicket}>Get Ticket</button>
        </HeroCard>
 
       </section>
         <h1>{concert.name}</h1>
-        <img className="ConcertDetail__image" src={productImage} alt={concert.name || 'Concert'} />
+        <img className="ConcertDetail__image" src={concertImage} alt={concert.name || 'Concert'} />
         <h2>Description</h2>
         <p>{concert.description?.[0]?.main}</p>
         <h2>Location</h2>
@@ -69,7 +77,8 @@ export default styled(ConcertDetail)`
   justify-content: center;
   align-items: center;
   }
-  .heroCard__btn {
+
+  .getTicket__btn {
   position: absolute;
   bottom: 24px;
   right: 24px;

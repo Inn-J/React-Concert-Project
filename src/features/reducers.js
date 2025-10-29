@@ -1,32 +1,32 @@
 import { createReducer } from '@reduxjs/toolkit';
 import {
-  fetchProducts,
-  getConcertById,
-  addProduct,
-  updateProduct,
-  deleteProduct,
+  fetchConcerts,
+  addConcert,
+  updateConcert,
+  deleteConcert,
 } from './Product/actions';
 
-let currentProductId = 9;
 
 export default createReducer([], (builder) => {
   builder
-    .addCase(fetchProducts, (state, action) => {
+    .addCase(fetchConcerts, (state, action) => {
       return action.payload;
     })
-    .addCase(addProduct, (state, action) => {
-      state.push({ id: ++currentProductId, ...action.payload });
+    .addCase(addConcert, (state, action) => {
+      const maxId = state.length > 0 ? Math.max(...state.map((c) => c.id)) : 0;
+      const newId = maxId + 1;
+      state.push({ id: newId, ...action.payload });
     })
-    .addCase(updateProduct, (state, action) => {
-      const productIndex = state.findIndex(
-        (product) => product.id === action.payload.id
+    .addCase(updateConcert, (state, action) => {
+      const concertIndex = state.findIndex(
+        (concert) => concert.id === action.payload.id
       );
-      state[productIndex] = action.payload;
+      state[concertIndex] = action.payload;
     })
-    .addCase(deleteProduct, (state, action) => {
-      const productIndex = state.findIndex(
-        (product) => product.id === action.payload.id
+    .addCase(deleteConcert, (state, action) => {
+      const concertIndex = state.findIndex(
+        (concert) => concert.id === action.payload.id
       );
-      state.splice(productIndex, 1);
+      state.splice(concertIndex, 1);
     });
 });

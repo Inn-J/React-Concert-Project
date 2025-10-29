@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch } from 'react-redux';
 import PropTypes from "prop-types";
 import styled from "styled-components";
+
+const MAX_TOTAL_QTY = 4;
 
 function TicketSelector({ prices = [], onChange, className }) {
   // เก็บจำนวนต่อรายการ เช่น [0,2,1,...]
@@ -9,14 +10,14 @@ function TicketSelector({ prices = [], onChange, className }) {
 
   // อัปเดต onChange ลงใน ref เพื่อให้ callback เสถียร
   const onChangeRef = useRef(onChange);
-  useEffect(() => {
-    onChangeRef.current = onChange;
-  }, [onChange]);
+  useEffect(() => { onChangeRef.current = onChange; }, [onChange]);
 
   // รีเซ็ตจำนวนเมื่อรายการเปลี่ยน
-  useEffect(() => {
-    setQuantities(prices.map(() => 0));
-  }, [prices]);
+  useEffect(() => { setQuantities(prices.map(() => 0)); }, [prices]);
+
+  // คำนวณยอดรวมจำนวนบัตรทั้งหมด
+  const totalQty = quantities.reduce((sum, q) => sum + (Number(q) || 0), 0);
+  const remaining = Math.max(0, MAX_TOTAL_QTY - totalQty);
 
   // guard กัน call ซ้ำเมื่อ selected ไม่ได้เปลี่ยนจริง
   const lastSelectedKeyRef = useRef("");
@@ -31,11 +32,22 @@ function TicketSelector({ prices = [], onChange, className }) {
     }
   }, [quantities, prices]);
 
-  const updateQty = (index, next) => {
+  // อัปเดตจำนวน พร้อมลิมิตรายรายการ + ลิมิตรวมทุกช่อง
+  const updateQty = (index, nextDesired) => {
     setQuantities((prev) => {
       const perItemMax = Number(prices[index]?.maxQty ?? 5);
-      const safe = Math.max(0, Math.min(Number(next) || 0, perItemMax));
-      if (safe === prev[index]) return prev;
+      const current = Number(prev[index] ?? 0);
+
+      // ยอดรวมของช่องอื่น ๆ (ไม่รวมช่องที่กำลังแก้)
+      const othersTotal = prev.reduce((s, q, i) => (i === index ? s : s + (Number(q) || 0)), 0);
+      const globalRemainingForThis = Math.max(0, MAX_TOTAL_QTY - othersTotal);
+
+      // ทำให้เป็นเลขปลอดภัยภายใต้ข้อจำกัด
+      let safe = Math.max(0, Math.min(Number(nextDesired) || 0, perItemMax, globalRemainingForThis));
+
+      // ถ้าไม่เปลี่ยนจริง ไม่ต้องอัปเดต state
+      if (safe === current) return prev;
+
       const copy = [...prev];
       copy[index] = safe;
       return copy;
@@ -53,16 +65,17 @@ function TicketSelector({ prices = [], onChange, className }) {
         {prices.map((price, index) => {
           const qty = quantities[index] ?? 0;
           const amount = Number(price.amount || 0);
-          const maxQty = Number(price.maxQty ?? 5);
+          const perItemMax = Number(price.maxQty ?? 5);
+
+          // disable ปุ่ม + ถ้าถึง per-item หรือถึงลิมิตรวม (MAX_TOTAL_QTY)
+          const disablePlus =
+            qty >= perItemMax || totalQty >= MAX_TOTAL_QTY;
 
           return (
             <li key={index} className={`ticket-item ${qty > 0 ? "active" : ""}`}>
               <div className="ticket-info">
                 <span className="ticket-option">{price.option}</span>
                 <span className="ticket-price">{amount.toLocaleString()} บาท</span>
-                {Number.isFinite(maxQty) && (
-                  <span className="ticket-limit">ซื้อได้สูงสุด {maxQty} ใบ</span>
-                )}
               </div>
 
               <div className="qty-group" aria-label={`จำนวน ${price.option}`}>
@@ -82,8 +95,13 @@ function TicketSelector({ prices = [], onChange, className }) {
                   type="button"
                   className="qty-btn"
                   onClick={() => inc(index)}
-                  disabled={qty >= maxQty}
+                  disabled={disablePlus}
                   aria-label="เพิ่มจำนวน"
+                  title={
+                    disablePlus && totalQty >= MAX_TOTAL_QTY
+                      ? `ถึงลิมิตรวม ${MAX_TOTAL_QTY} ใบแล้ว`
+                      : undefined
+                  }
                 >
                   +
                 </button>
@@ -98,10 +116,9 @@ function TicketSelector({ prices = [], onChange, className }) {
       </ul>
 
       <div className="summary">
-        <span>
-          รายการที่เลือก:{" "}
-          {prices.reduce((count, _p, i) => count + ((quantities[i] ?? 0) > 0 ? 1 : 0), 0)} รายการ
-        </span>
+        <div className="summary-left">
+          <div>รวมจำนวนบัตร: <strong>{totalQty}</strong> ใบ</div>
+        </div>
         <span className="summary-total">
           รวมทั้งหมด:{" "}
           {prices
@@ -128,7 +145,6 @@ TicketSelector.propTypes = {
   onChange: PropTypes.func,
   className: PropTypes.string,
 };
-
 
 export default styled(TicketSelector)`
   .ticket-list {
@@ -170,6 +186,7 @@ export default styled(TicketSelector)`
   }
   .ticket-option { font-weight: 700; }
   .ticket-price  { font-weight: 600; color: #333; opacity: .9; }
+  .ticket-limit  { font-size: 12px; color: #666; }
 
   .qty-group {
     display: inline-flex;
@@ -218,7 +235,18 @@ export default styled(TicketSelector)`
     border-top: 1px dashed #e8e8e8;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-weight: 700;
+    gap: 12px;
+  }
+  .summary-left {
+    display: grid;
+    gap: 4px;
+  }
+  .summary .hint {
+    font-weight: 500;
+    font-size: 13px;
+    color: #666;
   }
 
   @media (max-width: 600px) {
@@ -228,6 +256,10 @@ export default styled(TicketSelector)`
     .line-total {
       grid-column: 1 / -1;
       justify-self: end;
+    }
+    .summary {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 `;

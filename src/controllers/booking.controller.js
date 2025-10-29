@@ -12,44 +12,54 @@ async function writeBookingData(data) {
 }
 
 exports.getBookings = async (req, res) => {
-  const tickets = await readBookingData();
-  res.json(tickets);
+  const bookings = await readBookingData();
+  res.json(bookings);
 };
 
 exports.getBookingById = async (req, res) => {
-  const tickets = await readBookingData();
-  const ticket = tickets.find((t) => String(t.id) === String(req.params.id));
-  if (!ticket) return res.status(404).json({ message: "Not found" });
-  res.json(ticket);
+  const bookings = await readBookingData();
+  const booking = bookings.find((t) => String(t.id) === String(req.params.id));
+  if (!booking) return res.status(404).json({ message: "Not found" });
+  res.json(booking);
+};
+
+exports.getBookingsByUser = async (req, res) => {
+  const bookings = await readBookingData();
+  const userBookings = bookings.filter((t) => String(t.userId) === String(req.params.userId));
+
+  if (userBookings.length === 0)
+    return res.status(404).json({ message: "No bookings found for this user" });
+
+  res.json(userBookings);
 };
 
 exports.createBooking = async (req, res) => {
-  const tickets = await readBookingData();
-  const ids = tickets.map((t) => Number(t.id)).filter(Number.isFinite);
+  const bookings = await readBookingData();
+  const ids = bookings.map((t) => Number(t.bookingId)).filter(Number.isFinite);
   const nextId = ids.length ? Math.max(...ids) + 1 : 1;
-  const newItem = { id: nextId, ...req.body };
-  tickets.push(newItem);
-  await writeBookingData(tickets);
+  const newItem = { bookingId: nextId, ...req.body };
+  bookings.push(newItem);
+  await writeBookingData(bookings);
   res.status(201).json(newItem);
 };
 
 exports.updateBooking = async (req, res) => {
-  const tickets = await readBookingData();
-  const idx = tickets.findIndex((t) => String(t.id) === String(req.params.id));
+  const bookings = await readBookingData();
+  const idx = bookings.findIndex((t) => String(t.id) === String(req.params.id));
   if (idx === -1) return res.status(404).json({ message: "Not found" });
-  tickets[idx] = { ...tickets[idx], ...req.body, id: tickets[idx].id };
-  await writeBookingData(tickets);
+  bookings[idx] = { ...bookings[idx], ...req.body, id: bookings[idx].id };
+  await writeBookingData(bookings);
 
-  res.json(tickets[idx]);
+  res.json(bookings[idx]);
 };
 
 exports.deleteBooking = async (req, res) => {
-  const tickets = await readBookingData();
-  const idx = tickets.findIndex((t) => String(t.id) === String(req.params.id));
+  const bookings = await readBookingData();
+  const idx = bookings.findIndex((t) => String(t.id) === String(req.params.id));
   if (idx === -1) return res.status(404).json({ message: "Not found" });
 
-  const [removed] = tickets.splice(idx, 1);
-  await writeBookingData(tickets);
+  const [removed] = bookings.splice(idx, 1);
+  await writeBookingData(bookings);
 
   res.json({ success: true, removed });
 };
