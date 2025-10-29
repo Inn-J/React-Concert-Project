@@ -6,19 +6,24 @@ import { Calendar, MapPin, Ticket } from "lucide-react";
 function MyTicketCard({ ticket, className }) {
   if (!ticket) return null;
 
+  // Dynamically load ticket image with fallback
+  let ticketImageSrc;
+  try {
+    ticketImageSrc = require(`../../assets/${ticket.image}`);
+  } catch (err) {
+    ticketImageSrc = require(`../../assets/default.png`);
+  }
+
   return (
     <div className={className}>
       <div className="ticketCard">
         <img
           className="ticketImage"
-          src={ticket.imageUrl}
-          alt={ticket.eventName}
-          onError={(e) => {
-            e.target.src = "/images/default.jpg";
-          }}
+          src={ticketImageSrc}
+          alt={ticket.name}
         />
         <div className="ticketInfo">
-          <h4 className="eventName">{ticket.eventName}</h4>
+          <h4 className="eventName">{ticket.name}</h4>
           <div className="detail">
             <Calendar className="detailIcon" />
             <span>{ticket.date} | {ticket.time}</span>
@@ -27,14 +32,18 @@ function MyTicketCard({ ticket, className }) {
             <MapPin className="detailIcon" />
             <span>{ticket.location}</span>
           </div>
-          <div className="detail">
-            <Ticket className="detailIcon" />
-            <span>{ticket.option}</span>
+          {ticket.option && (
+            <div className="detail">
+              <Ticket className="detailIcon" />
+              <span>{ticket.option}</span>
+            </div>
+          )}
+        </div>
+        {ticket.bookingId && (
+          <div className="ticketId">
+            <span>ID{ticket.bookingId}</span>
           </div>
-        </div>
-        <div className="ticketId">
-          <span>ID{ticket.bookingId}</span>
-        </div>
+        )}
       </div>
     </div>
   );
@@ -42,12 +51,12 @@ function MyTicketCard({ ticket, className }) {
 
 MyTicketCard.propTypes = {
   ticket: PropTypes.shape({
-    eventName: PropTypes.string,
+    name: PropTypes.string.isRequired,
     date: PropTypes.string,
     time: PropTypes.string,
     location: PropTypes.string,
     option: PropTypes.string,
-    imageUrl: PropTypes.string,
+    image: PropTypes.string, // matches your data
     bookingId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }),
   className: PropTypes.string,

@@ -100,6 +100,9 @@ function PaymentPage({ className }) {
       const bookingData = {
         concertId: id,
         concertName: concert.name,
+        concertDate: concert.date,
+        concertTime: concert.time,
+        concertLocation: concert.location,
         lineItems,                 // ✅ เก็บทุกรายการ (รองรับทั้ง single/multi)
         totalQuantity: totalQty,
         totalPrice: grandTotal,
@@ -271,7 +274,7 @@ function PaymentPage({ className }) {
 
         {booked && (
           <p className="success">✅ ชำระเงินสำเร็จ! ระบบได้บันทึกคำสั่งซื้อของคุณแล้ว<br />
-          กำลังนำคุณกลับไปยังหน้าหลัก...
+            กำลังนำคุณกลับไปยังหน้าหลัก...
           </p>
         )}
       </div>

@@ -1,17 +1,30 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  /* Import fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Prompt:wght@400;500;600;700&display=swap');
+
   * {
     box-sizing: border-box;
   }
 
   body {
     margin: 0;
-    background-color:#F7F3E9;
-    font-family: 'Prompt', sans-serif;
+    background-color: #F7F3E9;
+    line-height: 1.5;
+    color: #333;
+    font-family: 'Montserrat', 'Prompt', sans-serif;
   }
 
-    
-    `;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+`;
 
 export default GlobalStyle;
