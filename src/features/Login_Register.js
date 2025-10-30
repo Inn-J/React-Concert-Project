@@ -315,10 +315,14 @@ function AuthModal({ className }) {
 }
 
 export default styled(AuthModal)`
-  /* Layout */
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  min-height: 100vh;
+  padding: 80px 16px 16px;
+
   .auth-modal-wrapper {
-    max-width: 480px;
+    max-width: 600px;
     margin: 24px auto;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     color: #242424;
@@ -326,11 +330,14 @@ export default styled(AuthModal)`
   }
 
   .modal-content {
-    background: #ffffff;
+    width: 100%;
+    max-width: 500px;
+    padding: 24px;
+    background: #fff;
     border-radius: 8px;
     box-shadow: 0 8px 24px rgba(15, 15, 15, 0.08);
-    padding: 18px;
-    border: 1px solid rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
   }
 
   .hide {

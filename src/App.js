@@ -6,18 +6,22 @@ import Login_Register from './features/Login_Register';
 import GlobalStyle from './features/GlobalStyle';
 import { fetchConcerts} from './features/Product/actions';
 import ConcertDetailPage from './features/ConcertDetail/ConcertDetailPage'
-import { Routes, Route } from 'react-router-dom';
+import { useLocation,Routes, Route } from 'react-router-dom';
 import Home from './features/Home';
 import SelectTicket from './features/BuyTicket/BuyTicketPage';
 import ScrollToTop from "./features/ScrollToTop";
 import PaymentPage from './features/Payment/PaymentPage';
 import ProfilePage from './features/Profile/ProfilePage';
 import AdminPage from './features/Admin/AdminPage';
+import Adminlogin from './features/Admin/Adminlogin';
 
 function App() {
   const concerts = useSelector((state) => state.concerts);
   const dispatch = useDispatch();
   const [currentUser, setCurrentUser] = useState(null);
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+
+  const location = useLocation();
 
   useEffect(() => {
     async function getConcerts() {
@@ -37,7 +41,13 @@ function App() {
     if (savedUser) {
       setCurrentUser(JSON.parse(savedUser));
     }
-  }, [dispatch]);
+    }, [dispatch]);
+
+    useEffect(() => {
+    if (!location.pathname.startsWith('/admin')) {
+      setIsAdminLoggedIn(false);
+    }
+    }, [location.pathname]);
   return (
     <>
       <GlobalStyle />
@@ -51,7 +61,7 @@ function App() {
           <Route path="/select-ticket/:id" element={<SelectTicket />} />
           <Route path="/payment/:id" element={<PaymentPage />} />
           <Route path="/profile" element={<ProfilePage currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
-          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin" element={ isAdminLoggedIn ? (<AdminPage /> ) : (<Adminlogin setIsAdminLoggedIn={setIsAdminLoggedIn} />)}/>
         </Routes>
       </Container>
     </>

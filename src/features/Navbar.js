@@ -14,9 +14,6 @@ function Navbar({ className, currentUser }) {
         <img src={tickettoLogo} alt="Ticketto Logo" />
       </Link>
 
-<Link to="/admin" className="login">
-          <span>Admin</span>
-        </Link>
       {currentUser ? (
         // When user is logged in
         <Link to="/profile" className="login">
