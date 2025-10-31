@@ -9,7 +9,10 @@ export default function ScrollConcert( { products } ) {
 
   useEffect(() => {
   if (Array.isArray(products)) {
-    setConcerts(products.filter(Boolean));
+    setConcerts(products
+      .filter(Boolean)
+      .filter((item) => item.Recommended === true)
+    );
   }
   }, [products?.length]);
 
@@ -52,7 +55,6 @@ export default function ScrollConcert( { products } ) {
     </Wrap>
   );
 }
-
 
   function renderCards(concerts, current, visibleCount, getOffset) {
   return concerts.map((concert, i) => {

@@ -12,12 +12,6 @@ export default function ConcertList( {products}) {
   }
   }, [products?.length]);
 
-  useEffect(() => {
-  if (Array.isArray(products)) {
-    setConcerts(products.filter(Boolean));
-  }
-}, [products?.length]);
-
   if (!concerts.length) {
     return <Wrap>ไม่มีคอนเสิร์ตให้แสดง</Wrap>;
   }

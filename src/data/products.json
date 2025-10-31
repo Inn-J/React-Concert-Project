@@ -117,7 +117,8 @@
         "condition": "ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"
       }
     ],
-    "Category": "Concert/Musical"
+    "Category": "Concert/Musical",
+    "Recommended": true
   },
   {
     "id": 5,
@@ -140,7 +141,8 @@
         "condition": "ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"
       }
     ],
-    "Category": "Concert/Musical"
+    "Category": "Concert/Musical",
+    "Recommended": true
   },
   {
     "id": 6,
@@ -167,7 +169,8 @@
         "condition": "ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"
       }
     ],
-    "Category": "Concert/Musical"
+    "Category": "Concert/Musical",
+    "Recommended": true
   },
   {
     "id": 7,
@@ -202,7 +205,8 @@
         "condition": "ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"
       }
     ],
-    "Category": "Concert/Musical"
+    "Category": "Concert/Musical",
+    "Recommended": true
   },
   {
     "id": 8,
@@ -312,7 +316,8 @@
         "condition": "ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"
       }
     ],
-    "Category": "Concert/Musical"
+    "Category": "Concert/Musical",
+    "Recommended": true
   },
   {
     "id": 10,
@@ -352,7 +357,8 @@
       }
     ],
     "Category": "Fan meeting",
-    "Banner": "FFF_Banner.jpg"
+    "Banner": "FFF_Banner.jpg",
+    "Recommended": true
   },
   {
     "id": 11,
@@ -400,7 +406,8 @@
       }
     ],
     "Category": "Concert/Musical",
-    "Banner": "MonHunt_Banner.jpg"
+    "Banner": "MonHunt_Banner.jpg",
+    "Recommended": true
   },
   {
     "id": 12,
@@ -436,6 +443,7 @@
       }
     ],
     "Category": "Concert/Musical",
-    "Banner": "TGS_Banner.jpg"
+    "Banner": "TGS_Banner.jpg",
+    "Recommended": true
   }
 ]
