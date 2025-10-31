@@ -6,7 +6,6 @@ import { Calendar, MapPin, Ticket } from "lucide-react";
 function MyTicketCard({ ticket, className }) {
   if (!ticket) return null;
 
-  // Dynamically load ticket image with fallback
   let ticketImageSrc;
   try {
     ticketImageSrc = require(`../../assets/${ticket.imageUrl}`);
@@ -56,7 +55,7 @@ MyTicketCard.propTypes = {
     time: PropTypes.string,
     location: PropTypes.string,
     option: PropTypes.string,
-    image: PropTypes.string, // matches your data
+    image: PropTypes.string,
     bookingId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }),
   className: PropTypes.string,

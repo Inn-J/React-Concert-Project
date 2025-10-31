@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MyTicketCard from "./MyticketCard";
 import PaymentCard from "./PaymentCard";
 import Sidebar from "./Sidebar";
@@ -12,7 +12,6 @@ function ProfilePage({ currentUser, setCurrentUser, className }) {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeView, setActiveView] = useState('tickets');
-  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadData() {
@@ -25,6 +24,7 @@ function ProfilePage({ currentUser, setCurrentUser, className }) {
 
         const parsedUser = JSON.parse(savedUser);
         setUser(parsedUser);
+        setCurrentUser(parsedUser);
 
         const bookingRes = await fetch(
           `http://localhost:4000/bookings/user/${parsedUser.id}`
@@ -85,7 +85,6 @@ function ProfilePage({ currentUser, setCurrentUser, className }) {
       <div className="content">
         <h3 className="title">My Profile</h3>
         <div className="main">
-          {/* Sidebar component */}
           <Sidebar 
             user={user} 
             setCurrentUser={setCurrentUser}
@@ -93,7 +92,6 @@ function ProfilePage({ currentUser, setCurrentUser, className }) {
             setActiveView={setActiveView}
           />
 
-          {/* Main Content Section */}
           <main className="tickets">
             <h3>{activeView === 'tickets' ? 'My Tickets' : 'Payment History'}</h3>
             
@@ -113,7 +111,7 @@ function ProfilePage({ currentUser, setCurrentUser, className }) {
                 </div>
               )
             ) : (
-              // Payment History View
+
               bookings.length === 0 ? (
                 <div className="noTickets">
                   <h4>No payment history</h4>
