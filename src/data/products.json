@@ -3,7 +3,7 @@
     "id": 1,
     "name": "How Do You Do, Snoopy ? 75 Years: A Journey of Friendship Through Art",
     "date": "06 ก.ย. - 07 ธ.ค. 2025",
-    "time": "10:00 - 20:00",
+    "time": "10:00 - 21:00",
     "location": "ริเวอร์ ซิตี้ แบงค็อก",
     "prices": [
       {
@@ -32,7 +32,8 @@
         "condition": "ไม่สามารถยกเลิก หรือเปลี่ยนแปลงบัตรได้ กรุณาตรวจสอบรายละเอียดบัตรก่อนชำระเงิน การซื้อบัตรผ่านช่องทางอื่นๆ และเกิดการทุจริตในการซื้อขาย ทางบริษัทฯจะไม่รับผิดชอบในทุกกรณี"
       }
     ],
-    "Category": "Art Exhibition"
+    "Category": "Art Exhibition",
+    "Banner": ""
   },
   {
     "id": 2,

@@ -136,7 +136,6 @@ function PaymentPage({ className }) {
           <div className="concert-img fallback" aria-label="no-image">No Image</div>
         )}
         <div className="concert-info">
-          <p className="category">Concert/Musical</p>
           <h2>{concert.name}</h2>
           <p><strong>วันที่:</strong> {concert.date}</p>
           <p><strong>เวลา:</strong> {concert.time}</p>

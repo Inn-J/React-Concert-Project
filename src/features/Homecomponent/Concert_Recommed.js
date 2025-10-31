@@ -17,7 +17,7 @@ export default function Concert_Recommed( { products } ) {
   }, [products?.length]);
 
   const next = () => {
-    setCurrent((prev) => (prev + 1) % concerts.length);
+    setCurrent((next) => (next + 1) % concerts.length);
   };
 
   const prev = () => {
@@ -56,7 +56,8 @@ export default function Concert_Recommed( { products } ) {
   );
 }
 
-  function renderCards(concerts, current, visibleCount, getOffset) {
+// จำนวนการ์ดที่แสดง (2 ซ้าย + 1 กลาง + 2 ขวา)
+function renderCards(concerts, current, visibleCount, getOffset) {
   return concerts.map((concert, i) => {
     const offset = getOffset(i);
     const absOffset = Math.abs(offset);
@@ -64,8 +65,8 @@ export default function Concert_Recommed( { products } ) {
 
     const scale = 1 - absOffset * 0.10;
     const opacity = 1 - absOffset * 0.15;
-    const translateX = offset * 275; //
-    const translateY = absOffset * 20; //
+    const translateX = offset * 275; 
+    const translateY = absOffset * 20; 
 
     return (
       <CardWrapper
