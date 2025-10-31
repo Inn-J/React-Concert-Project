@@ -11,7 +11,7 @@ const imagesMap = req.keys().reduce((acc, key) => {
 }, {});
 const getImage = (filename) => imagesMap[filename] || imagesMap["placeholder.png"];
 
-export default function BannerConcert( {products} ) {
+export default function Concert_Banner( {products} ) {
   const [concerts, setConcerts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ConcertCard from './ConcertCard';
 
-export default function ConcertList( {products}) {
+export default function Concert_Incoming( {products}) {
   const [concerts, setConcerts] = useState([]);
 
   useEffect(() => {

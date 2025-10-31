@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ConcertCard from './ConcertCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function ScrollConcert( { products } ) {
+export default function Concert_Recommed( { products } ) {
   const [concerts, setConcerts] = useState([]);
   const [current, setCurrent] = useState(0); // index ของการ์ดกลาง
 

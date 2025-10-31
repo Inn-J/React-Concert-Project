@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import ScrollConcert from './Homecomponent/Concert_Recommed';
-import Concertlist from './Homecomponent/Concert_list';
-import IncommingConcertlist from './Homecomponent/Concert_Incoming';
+import Concert_Recommed from './Homecomponent/Concert_Recommed';
+import Concert_List from './Homecomponent/Concert_List';
+import Concert_Incoming from './Homecomponent/Concert_Incoming';
 import Concert_Banner from './Homecomponent/Concert_Banner';
 
 export default function Home({ products }) {
@@ -12,13 +12,13 @@ export default function Home({ products }) {
         <Concert_Banner products={products}/>
       </ListSection>
       <ScrollSection>
-        <ScrollConcert products={products}/>
+        <Concert_Recommed products={products}/>
       </ScrollSection>
       <ListSection>
-        <IncommingConcertlist products={products}/>
+        <Concert_Incoming products={products}/>
       </ListSection>
       <ListSection>
-        <Concertlist products={products}/>
+        <Concert_List products={products}/>
       </ListSection>
     </HomeWrap>
   );

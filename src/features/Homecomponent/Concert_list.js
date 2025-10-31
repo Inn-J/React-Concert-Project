@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ConcertCard from "./ConcertCard";
 
-export default function ConcertList({ products }) {
+export default function Concert_List({ products }) {
   const [concerts, setConcerts] = useState([]);
   const [category, setCategory] = useState("See All");
   const [showAll, setShowAll] = useState(false);
