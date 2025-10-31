@@ -22,7 +22,7 @@ function MyTicketCard({ ticket, className }) {
           alt={ticket.name}
         />
         <div className="ticketInfo">
-          <h4 className="eventName">{ticket.name}</h4>
+          <h4 className="eventName">{ticket.eventName}</h4>
           <div className="detail">
             <Calendar className="detailIcon" />
             <span>{ticket.date} | {ticket.time}</span>

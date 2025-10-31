@@ -41,10 +41,10 @@ function ProfilePage({ currentUser, setCurrentUser, className }) {
 
         const userBookings = await bookingRes.json();
         
-        // Store raw bookings for Payment History
+        //raw bookings
         setBookings(userBookings);
 
-        // Transform bookings into tickets for My Tickets view
+        // Transform bookings -> tickets
         const transformedTickets = userBookings.flatMap((booking) =>
           booking.lineItems.map((item, index) => {
             let concertImage;
