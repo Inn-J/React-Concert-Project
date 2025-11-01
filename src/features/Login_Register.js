@@ -17,7 +17,8 @@ function AuthModal({ className }) {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // ------------------ LOGIN ------------------
+
+
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
@@ -38,11 +39,11 @@ function AuthModal({ className }) {
         return;
       }
 
-      // Save user to localStorage
+
       localStorage.setItem('currentUser', JSON.stringify(data.user));
       alert(`✅ Welcome back, ${data.user.name}!`);
 
-      // Redirect to home
+
       window.location.href = '/';
     } catch (err) {
       console.error(err);
@@ -50,7 +51,7 @@ function AuthModal({ className }) {
     }
   };
 
-  // ------------------ REGISTER ------------------
+
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
 
@@ -87,7 +88,7 @@ function AuthModal({ className }) {
       }
 
       alert('✅ Registered successfully!');
-      setIsLoginView(true); // กลับไปหน้า login
+      setIsLoginView(true);
     } catch (err) {
       console.error(err);
       alert('เกิดข้อผิดพลาดขณะสมัครสมาชิก');
