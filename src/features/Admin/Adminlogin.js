@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
 function AuthModal({ setIsAdminLoggedIn , className}) {
+
+
+
   const [formData, setFormData] = useState({
     username: '',
     password: ''
